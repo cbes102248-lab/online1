@@ -170,8 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             box.onclick = () => showModal(el);// 點擊方塊開啟彈窗
             if (el.row > 7) {
+                box.style.gridRow = el.row - 8; 
+                box.style.gridColumn = el.col;
                 if (extraRows) extraRows.appendChild(box);
             } else {
+                box.style.gridRow = el.row;
+                box.style.gridColumn = el.col;
                 table.appendChild(box);
             }
         });
