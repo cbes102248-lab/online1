@@ -6,161 +6,119 @@
     <title>互動式週期表 - 化學視界</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 週期表專用樣式 */
+        /* --- 1. 週期表外層容器 --- 
+   控制整個週期表的背景、邊距與陰影 */
         .periodic-table-container {
-            margin: 40px 0;
+            margin: 40px auto;
             background: #fff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 1200px; /* 限制最大寬度，避免在大螢幕過扁 */
+            overflow-x: auto;  /* 關鍵：當表格超出寬度時，允許水平捲動，防止破版 */
         }
+
+/* --- 2. 主週期表網格佈局 --- 
+   設定為 18 欄位，1fr 代表欄位會平均分配剩餘空間 */
         .periodic-table {
             display: grid;
-            grid-template-columns: repeat(18, 1fr);
+            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* minmax 確保元素不縮小到變形 */
             gap: 5px;
-            max-width: 100%;
-            overflow-x: auto; /* 確保在小螢幕上可以捲動 */
+            min-width: 800px; /* 確保在手機上內部表格維持形狀，讓容器捲動 */
         }
+
+/* --- 3. 元素方塊樣式 --- 
+   定義方塊的顏色、大小與動畫效果 */
         .element-box {
-            background: #ecf0f1; /* 實驗室灰 */
+            background: #ecf0f1;
             border: 1px solid #bdc3c7;
-            padding: 8px 3px; /* 調整內邊距 */
             text-align: center;
-            font-size: 0.75rem; /* 縮小字體 */
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease;
             border-radius: 3px;
             position: relative;
-            min-width: 40px; /* 確保最小寬度 */
-            height: 55px; /* 確保高度 */
+            aspect-ratio: 1 / 1.2; /* 固定寬高比，讓方塊看起來一致 */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
+
+/* 懸停效果：放大並加深陰影 */
         .element-box:hover {
             background: #dce0e3;
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            transform: scale(1.1);
+            z-index: 10; /* 確保放大時不被鄰居擋住 */
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
         }
-        .element-symbol {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #2c3e50;
-        }
+
+/* --- 4. 方塊內的文字層次 --- */
         .element-number {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             position: absolute;
-            top: 2px;
-            left: 3px;
+            top: 4px;
+            left: 4px;
             color: #7f8c8d;
         }
+
+        .element-symbol {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
         .element-name {
-            font-size: 1.0rem;
+            font-size: 0.75rem;
             color: #555;
-            margin-top: 2px;
         }
 
-        /* 佔位符，使週期表佈局正確 */
-        .placeholder {
-            visibility: hidden;
-        }
-
-        /* 週期表底部系列 */
+/* --- 5. 底部鑭系與錒系特化 --- 
+   不再使用 margin-left，而是直接設定為網格佈局 */
         .lanthanides-actinides {
-            margin-top: 20px;
+            margin-top: 30px;
             display: grid;
-            grid-template-columns: repeat(15, 1fr); /* 15個元素 */
+            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* 維持 18 欄與主表對齊 */
             gap: 5px;
-            margin-left: calc(3 * 40px + 3 * 5px); /* 對齊位置，假設元素寬度40px，間距5px */
+            min-width: 800px;
         }
-        
-        /* 元素資訊彈窗 */
+
+/* 這裡是關鍵：強制讓底部的鑭系與錒系從第 4 欄開始排列，完美對齊第 3 族 */
+        .lanthanides-actinides .element-box {
+            grid-column: span 1; /* 預設佔一格 */
+}
+/* 讓每一排的第一個元素從第 4 欄開始 */
+        .lanthanides-actinides .element-box:nth-child(15n+1) {
+            grid-column-start: 4;
+        }
+
+/* --- 6. 彈窗 (Modal) 樣式 --- */
         .modal {
-            display: none; /* 預設隱藏 */
-            position: fixed; /* 保持在螢幕上 */
-            z-index: 1000; /* 最上層 */
+            display: none;
+            position: fixed;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* 啟用滾動條 */
-            background-color: rgba(0,0,0,0.4); /* 半透明黑色背景 */
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px); /* 背景模糊增加質感 */
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: #fefefe;
-            margin: auto;
+            background-color: #fff;
             padding: 30px;
-            border: 1px solid #888;
-            width: 80%; /* 寬度 */
+            border-radius: 12px;
+            width: 90%;
             max-width: 500px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             position: relative;
+            animation: slideDown 0.3s ease-out; /* 增加彈出動畫 */
         }
 
-        .close-button {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        .modal-content h3 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-top: 0;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        .modal-content p {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        .modal-content strong {
-            color: #e67e22;
-        }
-
-        /* 響應式調整週期表 */
-        @media (max-width: 768px) {
-            .element-box {
-                font-size: 0.6rem;
-                min-width: 30px;
-                height: 45px;
-                padding: 5px 2px;
-            }
-            .element-symbol {
-                font-size: 0.9rem;
-            }
-            .element-number {
-                font-size: 0.5rem;
-            }
-            .element-name {
-                font-size: 0.5rem;
-            }
-            .periodic-table {
-                gap: 3px;
-            }
-            .lanthanides-actinides {
-                gap: 3px;
-                margin-left: calc(3 * 30px + 3 * 3px); /* 調整對齊 */
-            }
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-            }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
     <body>
