@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動式週期表 - 化學視界</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 週期表專用樣式 */
+        .periodic-table-container {
+            margin: 40px 0;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .periodic-table {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 5px;
+            max-width: 100%;
+            overflow-x: auto; /* 確保在小螢幕上可以捲動 */
+        }
+        .element-box {
+            background: #ecf0f1; /* 實驗室灰 */
+            border: 1px solid #bdc3c7;
+            padding: 8px 3px; /* 調整內邊距 */
+            text-align: center;
+            font-size: 0.75rem; /* 縮小字體 */
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border-radius: 3px;
+            position: relative;
+            min-width: 40px; /* 確保最小寬度 */
+            height: 55px; /* 確保高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .element-box:hover {
+            background: #dce0e3;
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+        .element-symbol {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        .element-number {
+            font-size: 0.8rem;
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            color: #7f8c8d;
+        }
+        .element-name {
+            font-size: 1.0rem;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        /* 佔位符，使週期表佈局正確 */
+        .placeholder {
+            visibility: hidden;
+        }
+
+        /* 週期表底部系列 */
+        .lanthanides-actinides {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(15, 1fr); /* 15個元素 */
+            gap: 5px;
+            margin-left: calc(3 * 40px + 3 * 5px); /* 對齊位置，假設元素寬度40px，間距5px */
+        }
+        
+        /* 元素資訊彈窗 */
+        .modal {
+            display: none; /* 預設隱藏 */
+            position: fixed; /* 保持在螢幕上 */
+            z-index: 1000; /* 最上層 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* 啟用滾動條 */
+            background-color: rgba(0,0,0,0.4); /* 半透明黑色背景 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%; /* 寬度 */
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .modal-content h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .modal-content p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .modal-content strong {
+            color: #e67e22;
+        }
+
+        /* 響應式調整週期表 */
+        @media (max-width: 768px) {
+            .element-box {
+                font-size: 0.6rem;
+                min-width: 30px;
+                height: 45px;
+                padding: 5px 2px;
+            }
+            .element-symbol {
+                font-size: 0.9rem;
+            }
+            .element-number {
+                font-size: 0.5rem;
+            }
+            .element-name {
+                font-size: 0.5rem;
+            }
+            .periodic-table {
+                gap: 3px;
+            }
+            .lanthanides-actinides {
+                gap: 3px;
+                margin-left: calc(3 * 30px + 3 * 3px); /* 調整對齊 */
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">化學視界</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="#about">關於我們</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="container">
+            <h1 style="text-align: center; margin-top: 30px;">互動式週期表</h1>
+        
+            <section class="periodic-table-container">
+                <div class="periodic-table" id="periodicTable"></div>
+                <div class="lanthanides-actinides" id="extraRows"></div>
+            </section>
+        </main>
+
+        <div id="elementModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="modalName">元素名稱</h3>
+                <p>原子序：<span id="modalNumber"></span></p>
+                <p id="modalDesc"></p>
+                <div id="modalLinkContainer"></div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
+</head>
+<body>
+    <main class="article-page container">
+        <article>
+            <h1 class="article-title">互動式週期表：探索元素的世界</h1>
+            <p class="article-meta">更新於 2026年1月1日 by 東華大學 喵鴿</p>
+            <section class="article-section">
+                <h2>尋找元素的奧秘</h2>
+                <p>週期表是化學的基石，它將所有已知元素按照原子序、電子排布和化學性質進行了系統的排列。每一個方格都代表一個獨特的元素，它們構成了宇宙中的一切物質，從你手中的手機到遙遠的星辰。點擊上方的元素方塊，探索它們的奧秘吧！</p>
+            </section>
+            <section class="article-section">
+                <h2>元素的故事等你發現</h2>
+                <p>從地球的核心到太空的邊緣，元素無處不在。它們構建了生命，驅動了文明，也塑造了我們的世界。透過週期表，你不僅能學習到元素的科學數據，更能挖掘它們背後引人入勝的故事、歷史發現與在日常生活中的應用。</p>
+                <p>例如，鐵（Fe）是文明的基石，用於建築和工具；氧（O）是生命不可或缺的氣體；稀有氣體（如氖 Ne）則點亮了霓虹燈，為城市增添光彩。</p>
+            </section>
+
+            <div class="return-home">
+                <a href="index.html" class="btn">返回首頁</a>
+            </div>
+        </article>
+    </main>
+    <div id="elementModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalElementName"></h3>
+            <p>符號：<strong
