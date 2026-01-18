@@ -40,36 +40,101 @@ function loadPage(url) {
         .then(html => {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            
-            // 1. 取得新頁面的 <main> 元素
             const newMain = doc.getElementById('main-content');
-            // 2. 取得目前頁面的 <main> 元素
             const currentMain = document.getElementById('main-content');
+            const heroHeader = document.querySelector('.hero'); // 抓取首頁大標頭
 
             if (newMain && currentMain) {
-                // 【關鍵】將目前頁面的 Class 替換成新頁面的 Class
-                currentMain.className = newMain.className;
-                
-                // 【關鍵】替換內容
-                currentMain.innerHTML = newMain.innerHTML;
-                
-                // 更新網址與標題
-                history.pushState({ path: url }, '', url);
-                document.title = doc.title; 
+                // 1. 處理 Header：如果是首頁則顯示，分頁則隱藏
+                if (url.includes('index.html') || url.endsWith('/')) {
+                    if (heroHeader) heroHeader.style.display = 'block';
+                } else {
+                    if (heroHeader) heroHeader.style.display = 'none';
+                }
 
-                // 重新初始化該頁面需要的 JS (如週期表或動畫)
-                reInitPageScripts();
+                // 2. 替換內容
+                currentMain.className = newMain.className;
+                currentMain.innerHTML = newMain.innerHTML;
+
+                // 3. 更新 URL 與 標題
+                history.pushState({ path: url }, '', url);
+                document.title = doc.title;
+
+                // 4. 重要：延遲執行腳本初始化
+                setTimeout(reInitPageScripts, 50);
+
+                window.scrollTo(0, 0);
             }
         })
-        .catch(err => console.error('換頁失敗:', err));
+        .catch(err => {
+            console.error("載入失敗:", err);
+            window.location.href = url; // 失敗時的保險機制
+        });
 }
+function initPeriodicTable() {
+    const table = document.getElementById('periodicTable');
+    const extraRows = document.getElementById('extraRows');
+    const modal = document.getElementById('elementModal');
 
-// 重新初始化函式：因為內容是動態換的，有些 JS 監聽器要重綁
-function reInitPageScripts() {
-    // 如果新頁面有週期表，就在這裡重新呼叫生成函數
-    // if (document.getElementById('periodicTable')) { ... }
+    if (!table) return; // 如果這頁沒週期表，就不跑
+
+    console.log("偵測到週期表容器，開始渲染...");
+    table.innerHTML = ''; // 清空舊的，避免重複生成
+    if (extraRows) extraRows.innerHTML = '';
+
+    elements.forEach(el => {
+        const box = document.createElement('div');
+        box.className = 'element-box';
+        
+        // 設定網格位置
+        if (el.row > 7) {
+            box.style.gridRow = el.row - 8; 
+            box.style.gridColumn = el.col;
+            if (extraRows) extraRows.appendChild(box);
+        } else {
+            box.style.gridRow = el.row;
+            box.style.gridColumn = el.col;
+            if (table) table.appendChild(box);
+        }
+
+        box.innerHTML = `
+            <div class="element-number">${el.num}</div>
+            <div class="element-symbol">${el.symbol}</div>
+            <div class="element-name">${el.name}</div>
+        `;
+        
+        // 點擊事件
+        box.onclick = () => showModal(el);
+    });
+
+    // 重新綁定關閉按鈕事件 (因為彈窗可能也是剛換進來的)
+    const closeBtn = document.querySelector('.close-button');
+    if (closeBtn && modal) {
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
+    }
 }
-// script.js 完整元素資料
+function reInitPageScripts() {
+    console.log("執行換頁後的腳本初始化...");
+    
+    // 重新生成週期表
+    initPeriodicTable();
+
+    // 重新綁定首頁卡片提示 (銻)
+    const antimonyLink = document.querySelector('a[href="article-antimony.html"]');
+    if (antimonyLink) {
+        const antimonyCard = antimonyLink.parentElement;
+        antimonyCard.addEventListener('mouseenter', () => {
+            console.log("提示：你知道銻丸曾被重複使用了幾代人嗎？");
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    reInitPageScripts(); // 初次進入首頁或週期表頁時執行一次
+    
+    // 音樂控制 (如果 backmusic id 在 body 裡一直存在)
+    initMusicControl(); 
+});
 const elements = [
     // 第一週期
     { num: 1, symbol: "H", name: "氫", row: 1, col: 1 },
@@ -218,86 +283,29 @@ const elements = [
     { num: 117, symbol: "Ts", name: "鿬", row: 7, col: 17 },
     { num: 118, symbol: "Og", name: "鿫", row: 7, col: 18 }
 ];
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 週期表生成邏輯 ---
-    const table = document.getElementById('periodicTable');
-    const extraRows = document.getElementById('extraRows');
+
+// --- 4. 彈窗 function (放在全域) ---
+function showModal(el) {
     const modal = document.getElementById('elementModal');
-    if (table) {// 如果目前頁面有週期表容器才執行 (避免在首頁報錯)
-        elements.forEach(el => {
-            const box = document.createElement('div');
-            box.className = 'element-box';
-            box.style.gridColumn = el.col;
-            box.style.gridRow = el.row;
-            box.innerHTML = `
-                <div class="element-number">${el.num}</div>
-                <div class="element-symbol">${el.symbol}</div>
-                <div class="element-name">${el.name}</div>
-            `;
-            box.onclick = () => showModal(el);// 點擊方塊開啟彈窗
-            if (el.row > 7) {
-                box.style.gridRow = el.row - 8; 
-                box.style.gridColumn = el.col;
-                if (extraRows) extraRows.appendChild(box);
-            } else {
-                box.style.gridRow = el.row;
-                box.style.gridColumn = el.col;
-                table.appendChild(box);
-            }
-        });
+    if (!modal) return;
+    
+    document.getElementById('modalName').innerText = `${el.name} (${el.symbol})`;
+    document.getElementById('modalNumber').innerText = el.num;
+    document.getElementById('modalDesc').innerHTML = `
+        ${el.desc || "更多資訊編寫中..."}<br><br>
+        ${el.history ? `<strong>歷史：</strong>${el.history}<br>` : ''}
+        ${el.usage ? `<strong>用途：</strong>${el.usage}<br>` : ''}
+        ${el.funFact ? `<i style="color: #7f8c8d;">冷知識：${el.funFact}</i>` : ''}
+    `;
+    
+    const linkContainer = document.getElementById('modalLinkContainer');
+    linkContainer.innerHTML = ''; 
+    if (el.link) {
+        const btn = document.createElement('a');
+        btn.href = el.link;
+        btn.className = 'btn';
+        btn.innerText = '閱讀深度專題 →';
+        linkContainer.appendChild(btn);
     }
-    function showModal(el) {//彈窗顯示
-        if (!modal) return;
-        document.getElementById('modalName').innerText = `${el.name} (${el.symbol})`;
-        document.getElementById('modalNumber').innerText = el.num;
-        // 優先顯示詳細 desc，沒有的話顯示基本訊息
-        document.getElementById('modalDesc').innerHTML = `
-            ${el.desc || "更多資訊編寫中..."}<br><br>
-            ${el.history ? `<strong>歷史：</strong>${el.history}<br>` : ''}
-            ${el.usage ? `<strong>用途：</strong>${el.usage}<br>` : ''}
-            ${el.funFact ? `<i style="color: #7f8c8d;">冷知識：${el.funFact}</i>` : ''}
-        `;
-        
-        const linkContainer = document.getElementById('modalLinkContainer');
-        linkContainer.innerHTML = ''; 
-        if (el.link) {
-            const btn = document.createElement('a');
-            btn.href = el.link;
-            btn.className = 'btn';
-            btn.style.marginTop = '15px';
-            btn.style.display = 'inline-block';
-            btn.innerText = '閱讀深度專題 →';
-            linkContainer.appendChild(btn);
-        }
-        modal.style.display = 'flex';
-    }
-    // --- 關閉彈窗邏輯 ---
-    const closeBtn = document.querySelector('.close-button');
-    if (closeBtn) {
-        closeBtn.onclick = () => modal.style.display = 'none';
-    }
-    window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
-    // --- 3. 特殊互動區：首頁卡片提示 (放在最下面) ---
-    const antimonyCardLink = document.querySelector('a[href="article-antimony.html"]');
-    if (antimonyCardLink) {
-        const antimonyCard = antimonyCardLink.parentElement;
-        antimonyCard.addEventListener('mouseenter', () => {
-            console.log("提示：你知道銻丸曾被重複使用了幾代人嗎？");
-        });
-    }
-});
-const elementData = {
-    "Sb": {
-        name: "銻 (Antimony)",
-        number: 51,
-        history: "名稱傳說來自 'Anti-monk' (反僧侶)，因早期鍊金僧侶頻繁接觸導致中毒死亡而得名。",
-        usage: "主要用於塑膠阻燃劑、鉛酸電池強化合金，古代曾被當作眼影使用。",
-        funFact: "雖然它有毒，但在17世紀曾流行過『銻丸』，這種藥丸排泄後可以洗淨回收重複使用，被稱為恆久藥丸。"
-    }
-};
-document.addEventListener('DOMContentLoaded', () => {
-    const antimonyCard = document.querySelector('a[href="article-antimony.html"]').parentElement;
-    antimonyCard.addEventListener('mouseenter', () => {
-        console.log("提示：你知道銻丸曾被重複使用了幾代人嗎？");
-    });
-});
+    modal.style.display = 'flex';
+}

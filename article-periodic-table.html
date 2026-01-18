@@ -5,170 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>互動式週期表 - 化學視界</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* 週期表外層容器 控制週期表的背景、邊距與陰影 */
-        .periodic-table-container {
-            margin: 40px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 1200px; /* 限制最大寬度 */
-            overflow-x: auto;  /* 當表格超出寬度允許水平捲動 */
-        }
-/* 主週期表網格佈局 設定為 18 欄位，1fr 代表欄位會平均分配剩餘空間 */
-        .periodic-table {
-            display: grid;
-            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* minmax 確保元素不縮小到變形 */
-            gap: 5px;
-            min-width: 800px; /* 確保在手機上內部表格維持形狀，讓容器捲動...一堆bug還在修改 */
-        }
-/* 元素方塊顏色、大小與動畫效果 */
-        .element-box {
-            background: #ecf0f1;
-            border: 1px solid #bdc3c7;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 3px;
-            position: relative;
-            aspect-ratio: 1 / 1.2; /* 固定寬高比，讓方塊看起來一致 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-/* 放大並加深陰影 */
-        .element-box:hover {
-            background: #dce0e3;
-            transform: scale(1.1);
-            z-index: 10; /* 確保放大時不被鄰居擋住 */
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-        }
-/*方塊內的文字層次*/
-        .element-number {
-            font-size: 0.7rem;
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            color: #7f8c8d;
-        }
+</head>
+<body>
+    <main id="main-content" class="article-page container">
+        <h1 style="text-align: center; margin-top: 30px;">互動式週期表</h1>
 
-        .element-symbol {
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: #2c3e50;
-        }
+        <section class="periodic-table-container">
+            <div class="periodic-table" id="periodicTable"></div>
+            <div class="lanthanides-actinides" id="extraRows"></div>
+        </section>
 
-        .element-name {
-            font-size: 0.75rem;
-            color: #555;
-        }
-
-/* 底部鑭系與錒系 設定為網格佈局 */
-        .lanthanides-actinides {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* 維持 18 欄與主表對齊 */
-            gap: 5px;
-            min-width: 800px;
-        }
-
-        
-        .lanthanides-actinides .element-box {
-            grid-column: span 1; /* 預設佔一格 */
-        }
-
-        .lanthanides-actinides .element-box:nth-child(15n+1) {
-            grid-column-start: 4;
-        }
-
-/* 彈窗樣式*/
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(3px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: slideDown 0.3s ease-out; /* 增加彈出動畫 */
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
-    <body>
-        <nav class="navbar">
-            <div class="container">
-                <a href="index.html" class="logo">化學視界</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="#about">關於我們</a></li>
-                    <li><a href="#contact">聯絡我們</a></li>
-                </ul>
-            </div>
-        </nav>
-        <main id="main-content" class="container">
-            <h1 style="text-align: center; margin-top: 30px;">互動式週期表</h1>
-        
-            <section class="periodic-table-container">
-                <div class="periodic-table" id="periodicTable"></div>
-                <div class="lanthanides-actinides" id="extraRows"></div>
+        <article>
+            <h1 class="article-title">互動式週期表：探索元素的世界</h1>
+            <p class="article-meta">更新於 2026年1月1日 by 東華大學 喵鴿</p>
+            <section class="article-section">
+                <h2>尋找元素的奧秘</h2>
+                <p>週期表是化學的基石，點擊上方的元素方塊，探索它們的奧秘吧！</p>
             </section>
-        </main>
+            <section class="article-section">
+                <h2>元素的故事等你發現</h2>
+                <p>例如，鐵（Fe）是文明的基石；氧（O）是生命不可或缺的氣體。</p>
+            </section>
+            <div class="return-home" style="text-align: center; margin: 30px 0;">
+                <a href="index.html" class="btn">返回首頁</a>
+            </div>
+        </article>
 
         <div id="elementModal" class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
                 <h3 id="modalName">元素名稱</h3>
                 <p>原子序：<span id="modalNumber"></span></p>
-                <p id="modalDesc"></p>
+                <div id="modalDesc"></div>
                 <div id="modalLinkContainer"></div>
             </div>
         </div>
-
-        <script src="script.js"></script>
-    </body>
-    </html>
-</head>
-<body>
-    <main class="article-page container">
-        <article>
-            <h1 class="article-title">互動式週期表：探索元素的世界</h1>
-            <p class="article-meta">更新於 2026年1月1日 by 東華大學 喵鴿</p>
-            <section class="article-section">
-                <h2>尋找元素的奧秘</h2>
-                <p>週期表是化學的基石，它將所有已知元素按照原子序、電子排布和化學性質進行了系統的排列。每一個方格都代表一個獨特的元素，它們構成了宇宙中的一切物質，從你手中的手機到遙遠的星辰。點擊上方的元素方塊，探索它們的奧秘吧！</p>
-            </section>
-            <section class="article-section">
-                <h2>元素的故事等你發現</h2>
-                <p>從地球的核心到太空的邊緣，元素無處不在。它們構建了生命，驅動了文明，也塑造了我們的世界。透過週期表，你不僅能學習到元素的科學數據，更能挖掘它們背後引人入勝的故事、歷史發現與在日常生活中的應用。</p>
-                <p>例如，鐵（Fe）是文明的基石，用於建築和工具；氧（O）是生命不可或缺的氣體；稀有氣體（如氖 Ne）則點亮了霓虹燈，為城市增添光彩。</p>
-            </section>
-
-            <div class="return-home">
-                <a href="index.html" class="btn">返回首頁</a>
-            </div>
-        </article>
     </main>
-    <div id="elementModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 id="modalElementName"></h3>
-            <p>符號：<strong
+</body>

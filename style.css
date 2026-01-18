@@ -273,6 +273,112 @@ body {
     text-align: center;
     margin-top: 50px;
 }
+/* 週期表外層容器 控制週期表的背景、邊距與陰影 */
+        .periodic-table-container {
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 1200px; /* 限制最大寬度 */
+            overflow-x: auto;  /* 當表格超出寬度允許水平捲動 */
+        }
+/* 主週期表網格佈局 設定為 18 欄位，1fr 代表欄位會平均分配剩餘空間 */
+        .periodic-table {
+            display: grid;
+            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* minmax 確保元素不縮小到變形 */
+            gap: 5px;
+            min-width: 800px; /* 確保在手機上內部表格維持形狀，讓容器捲動...一堆bug還在修改 */
+        }
+/* 元素方塊顏色、大小與動畫效果 */
+        .element-box {
+            background: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 3px;
+            position: relative;
+            aspect-ratio: 1 / 1.2; /* 固定寬高比，讓方塊看起來一致 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+/* 放大並加深陰影 */
+        .element-box:hover {
+            background: #dce0e3;
+            transform: scale(1.1);
+            z-index: 10; /* 確保放大時不被鄰居擋住 */
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+/*方塊內的文字層次*/
+        .element-number {
+            font-size: 0.7rem;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            color: #7f8c8d;
+        }
+
+        .element-symbol {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
+        .element-name {
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+/* 底部鑭系與錒系 設定為網格佈局 */
+        .lanthanides-actinides {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(18, minmax(40px, 1fr)); /* 維持 18 欄與主表對齊 */
+            gap: 5px;
+            min-width: 800px;
+        }
+
+        
+        .lanthanides-actinides .element-box {
+            grid-column: span 1; /* 預設佔一格 */
+        }
+
+        .lanthanides-actinides .element-box:nth-child(15n+1) {
+            grid-column-start: 4;
+        }
+
+/* 彈窗樣式*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideDown 0.3s ease-out; /* 增加彈出動畫 */
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
 /* 響應式設計 */
 @media (max-width: 768px) {
     .navbar .container {
