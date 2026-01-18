@@ -1,7 +1,15 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("化學視界網站已加載！");
+    const musicTrigger = document.getElementById('backmusic');
+    const audio = document.getElementById('bgMusic');
+
+    if (musicTrigger && audio) {
+        musicTrigger.addEventListener('click', () => {
+            audio.play().catch(e => console.log("播放失敗:", e));// 播放音樂
+            musicTrigger.classList.add('hidden');// 觸發 CSS 淡出效果
+        });
+    }
 });
 // script.js 完整元素資料
 const elements = [
