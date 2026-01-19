@@ -57,7 +57,7 @@
             matches = re.findall(r"\(([A-Za-z]+)\)\((\d+)\)", formula_str)
             for sym, count in matches:
                 if sym in ELEMENT_DICT:
-                    for _ in range(int(count))
+                    for _ in range(int(count)):
                         nodes.append({"sym": sym, "rem_e": ELEMENT_DICT[sym]["ve"]})
             return nodes
         def generate_ids(event):
