@@ -51,36 +51,35 @@
             "Ar": {"name": "Argon", "weight": 39.948, "mp": -189.3, "bp": -185.8, "en": 0.00, "ve": 8, "metal": False},
             "K":  {"name": "Potassium", "weight": 39.098, "mp": 63.4, "bp": 759.0, "en": 0.82, "ve": 1, "metal": True},
         }
-        def parse_formula():
-            formula_str = document.querySelector("#formula").value
+        def parse_formula(): # 化學式解析函數
+            formula_str = document.querySelector("#formula").value #從HTML取得化學式字串
             nodes = []
-            matches = re.findall(r"\(([A-Za-z]+)\)\((\d+)\)", formula_str)
+            matches = re.findall(r"\(([A-Za-z]+)\)\((\d+)\)", formula_str) #使用表達式抓取括號內的內容 元素符號 數量
             for sym, count in matches:
                 if sym in ELEMENT_DICT:
-                    for _ in range(int(count)):
+                    for _ in range(int(count)): #據數量將原子存入nodes列表 初始化該分子的剩餘價電子數 (rem_e)
                         nodes.append({"sym": sym, "rem_e": ELEMENT_DICT[sym]["ve"]})
             return nodes
-        def generate_ids(event):
-            nodes = parse_formula()
-            hint_div = document.querySelector("#id_hint")
-            if not nodes:
+        def generate_ids(event): #網頁交互函數：生成編號
+            nodes = parse_formula() 
+            hint_div = document.querySelector("#id_hint") #當使用者點擊『生成編號』時執行，顯示原子與對應索引
+            if not nodes: #當不符合標準化學式時顯示警告訊息
                 hint_div.innerText = "⚠ 格式不正確！請使用 (C)(1)(O)(2) 格式。"
                 return
-            hints = [f"[{i}]:{n['sym']}" for i, n in enumerate(nodes)]
+            hints = [f"[{i}]:{n['sym']}" for i, n in enumerate(nodes)] #生成原子標號字串並返回html
             hint_div.innerText = "原子編號： " + "  ".join(hints)
             document.querySelector("#bonds").placeholder = "若編號 0 與 1 有連接，請在此輸入：0 1"
-        def run_analysis(event):
+        def run_analysis(event): # 核心運算函數：執行結構分析
             output_div = document.querySelector("#output")
             nodes = parse_formula()
             if not nodes:
                 output_div.innerText = "錯誤：請先輸入化學式並點擊生成編號。"
                 return
-            charge = int(document.querySelector("#charge").value or 0)
+            charge = int(document.querySelector("#charge").value or 0) # 讀取電荷（影響中心原子電子數）與連接關係文字
             bonds_str = document.querySelector("#bonds").value
             total_atoms = len(nodes)
-            adj = [[0] * total_atoms for _ in range(total_atoms)]
-            #解析連接關係
-            for line in bonds_str.strip().split('\n'):
+            adj = [[0] * total_atoms for _ in range(total_atoms)] # 初始化鄰接矩陣 (adj)，用來紀錄原子間的鍵數 (0=沒連, 1=單鍵, 2=雙鍵)
+            for line in bonds_str.strip().split('\n'): #解析連接關係
                 try:
                     parts = line.split()
                     if len(parts) == 2:
@@ -102,7 +101,7 @@
                 while nodes[i]["rem_e"] > 0:
                     added = False
                     for j in range(total_atoms):
-                        if adj[i][j] >= 1 and nodes[j]["rem_e"] > 0:
+                        if adj[i][j] >= 1 and nodes[j]["rem_e"] > 0: #若兩者有相連且雙方都有剩餘電子，則增加鍵數
                             adj[i][j] += 1
                             adj[j][i] += 1
                             nodes[i]["rem_e"] -= 1
@@ -117,19 +116,19 @@
                 sym = nodes[i]["sym"]
                 e_data = ELEMENT_DICT[sym]
                 # 統計電負度
-                if e_data["en"] > max_en: max_en = e_data["en"]
+                if e_data["en"] > max_en: max_en = e_data["en"]  #更新分子內最高與最低電負度
                 if e_data["en"] > 0 and e_data["en"] < min_en: min_en = e_data["en"]
                 b_sum, nbr, desc = 0, 0, ""
                 for j in range(total_atoms):
                     if adj[i][j] > 0:
-                        bond_order = adj[i][j]
-                        b_sum += bond_order
-                        nbr += 1
-                        desc += f"{bond_order}-" 
+                        bond_order = adj[i][j]  #取得鍵級
+                        b_sum += bond_order  #累加總鍵數
+                        nbr += 1  #累加鄰居原子數 (即 VSEPR 中的 X)
+                        desc += f"{bond_order}-"  #記錄分配情況如 "2-1-"
                         neighbor_sym = nodes[j]["sym"]
-                        if sym == "H" and (neighbor_sym in ["F", "O", "N"]):
+                        if sym == "H" and (neighbor_sym in ["F", "O", "N"]): #氫鍵判斷：若 H 原子連接在 F, O, N 上
                             has_HB = True
-                lp = max(0, nodes[i]["rem_e"] // 2)
+                lp = max(0, nodes[i]["rem_e"] // 2)  #計算LP,即VSEPR中的E 剩餘電子除以 2
                 sn = nbr + lp
                 sh = "末端"
                 if sn == 4:
