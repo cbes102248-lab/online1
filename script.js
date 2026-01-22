@@ -117,488 +117,605 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const elements = [//週期表表格位置與彈窗訊息
     // 第一週期
-    { num: 1, symbol: "H", name: "氫", row: 1, col: 1,
-        category: "nonmetal" , electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 1, symbol: "H", name: "氫", row: 1, col: 1,
+        category: "nonmetal" , electronegativity: 2.20, year: 1766, flame: ,image: ,
      },
-    { num: 2, symbol: "He", name: "氦", row: 1, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: , flame: ,image: ,
+    {
+        num: 2, symbol: "He", name: "氦", row: 1, col: 18 ,
+        category: "noble-gas", electronegativity: 0, year: 1868, flame: ,image: ,
     },
     // 第二週期
-    { num: 3, symbol: "Li", name: "鋰", row: 2, col: 1 ,
-        category:  "alkali-metal", electronegativity: 0.98, year: , flame: ,image: ,
+    { 
+        num: 3, symbol: "Li", name: "鋰", row: 2, col: 1 ,
+        category:  "alkali-metal", electronegativity: 0.98, year: 1817, flame: ,image: ,
     },
-    { num: 4, symbol: "Be", name: "鈹", row: 2, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.57, year: , flame: ,image: ,
-
-    },
-    { num: 5, symbol: "B", name: "硼", row: 2, col: 13 ,
-        category: "metalloid", electronegativity: 2.04, year: , flame: ,image: ,
-
-    },
-    { num: 6, symbol: "C", name: "碳", row: 2, col: 14 ,
-        category: "nonmetal", electronegativity: 2.55, year: , flame: ,image: ,
-
-    },
-    { num: 7, symbol: "N", name: "氮", row: 2, col: 15 ,
-        category: "nonmetal", electronegativity: 3.04, year: , flame: ,image: ,
-
-    },
-    { num: 8, symbol: "O", name: "氧", row: 2, col: 16 ,
-        category: "nonmetal", electronegativity: 3.44, year: , flame: ,image: ,
-
-    },
-    { num: 9, symbol: "F", name: "氟", row: 2, col: 17 ,
-        category: "nonmetal", electronegativity: 3.98, year: , flame: ,image: ,
-
-    },
-    { num: 10, symbol: "Ne", name: "氖", row: 2, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: , flame: ,image: ,
-
-    },
-    // 第三週期
-    { num: 11, symbol: "Na", name: "鈉", row: 3, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.93, year: , flame: ,image: ,
-
-    },
-    { num: 12, symbol: "Mg", name: "鎂", row: 3, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.31, year: , flame: ,image: ,
-
-    },
-    { num: 13, symbol: "Al", name: "鋁", row: 3, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.61, year: , flame: ,image: ,
-
-    },
-    { num: 14, symbol: "Si", name: "矽", row: 3, col: 14 ,
-        category: "metalloid", electronegativity: 1.90, year: , flame: ,image: ,
-
-    },
-    { num: 15, symbol: "P", name: "磷", row: 3, col: 15 ,
-        category: "nonmetal", electronegativity: 2.19, year: , flame: ,image: ,
-
-    },
-    { num: 16, symbol: "S", name: "硫", row: 3, col: 16 ,
-        category: "nonmetal", electronegativity: 2.58, year: , flame: ,image: ,
-
-    },
-    { num: 17, symbol: "Cl", name: "氯", row: 3, col: 17 ,
-        category: "nonmetal", electronegativity: 3.16, year: , flame: ,image: ,
-
-    },
-    { num: 18, symbol: "Ar", name: "氬", row: 3, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: , flame: ,image: ,
-
-    },
-    // 第四週期
-    { num: 19, symbol: "K", name: "鉀", row: 4, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.82, year: , flame: ,image: ,
-
-    },
-    { num: 20, symbol: "Ca", name: "鈣", row: 4, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.00, year: , flame: ,image: ,
-
-    },
-    { num: 21, symbol: "Sc", name: "鈧", row: 4, col: 3 ,
-        category: "transition-metal", electronegativity: 1.36, year: , flame: ,image: ,
-
-    },
-    { num: 22, symbol: "Ti", name: "鈦", row: 4, col: 4 ,
-        category: "transition-metal", electronegativity: 1.54, year: , flame: ,image: ,
-
-    },
-    { num: 23, symbol: "V", name: "釩", row: 4, col: 5 ,
-        category: "transition-metal", electronegativity: 1.63, year: , flame: ,image: ,
-
-    },
-    { num: 24, symbol: "Cr", name: "鉻", row: 4, col: 6 ,
-        category: "transition-metal", electronegativity: 1.66, year: , flame: ,image: ,
-
-    },
-    { num: 25, symbol: "Mn", name: "錳", row: 4, col: 7 ,
-        category: "transition-metal", electronegativity: 1.55, year: , flame: ,image: ,
-
-    },
-    { num: 26, symbol: "Fe", name: "鐵", row: 4, col: 8 ,
-        category: "transition-metal", electronegativity: 1.83, year: , flame: ,image: ,
+    { 
+        num: 4, symbol: "Be", name: "鈹", row: 2, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 1.57, year: 1798, flame: ,image: ,
 
     },
     { 
-    num: 27, symbol: "Co", name: "鈷", row: 4, col: 9 ,
-        category: "transition-metal", electronegativity: 1.88, year: , flame: ,image: ,
-    desc: "曾被視為礦坑中的妖怪（Kobold），是維生素 B-12 的核心。",
-    link: "periodic-table/article27-cobalt.html", 
-    history: "名稱來自德國地下怪物kobold，因常伴隨砷出產而含劇毒，。",
-    usage: "用於製造藍色或具有磁性的合金，曾經鋰電池的正極",
-    funFact: "鈷也在隕石中被發現過"
-    },
-    { num: 28, symbol: "Ni", name: "鎳", row: 4, col: 10 ,
-        category: "transition-metal", electronegativity: 1.91, year: , flame: ,image: ,
+        num: 5, symbol: "B", name: "硼", row: 2, col: 13 ,
+        category: "metalloid", electronegativity: 2.04, year: 1808, flame: ,image: ,
 
     },
-    { num: 29, symbol: "Cu", name: "銅", row: 4, col: 11 ,
-        category: "transition-metal", electronegativity: 1.90, year: , flame: ,image: ,
+    { 
+        num: 6, symbol: "C", name: "碳", row: 2, col: 14 ,
+        category: "nonmetal", electronegativity: 2.55, year: 0, flame: ,image: ,
 
     },
-    { num: 30, symbol: "Zn", name: "鋅", row: 4, col: 12 ,
-        category: "transition-metal", electronegativity: 1.65, year: , flame: ,image: ,
+    { 
+        num: 7, symbol: "N", name: "氮", row: 2, col: 15 ,
+        category: "nonmetal", electronegativity: 3.04, year: 1772, flame: ,image: ,
 
     },
-    { num: 31, symbol: "Ga", name: "鎵", row: 4, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.81, year: , flame: ,image: ,
+    { 
+        num: 8, symbol: "O", name: "氧", row: 2, col: 16 ,
+        category: "nonmetal", electronegativity: 3.44, year: 1774, flame: ,image: ,
 
     },
-    { num: 32, symbol: "Ge", name: "鍺", row: 4, col: 14 ,
-        category: "metalloid", electronegativity: 2.01, year: , flame: ,image: ,
+    { 
+        num: 9, symbol: "F", name: "氟", row: 2, col: 17 ,
+        category: "nonmetal", electronegativity: 3.98, year: 1886, flame: ,image: ,
 
     },
-    { num: 33, symbol: "As", name: "砷", row: 4, col: 15 ,
-        category: "metalloid", electronegativity: 2.18, year: , flame: ,image: ,
+    { 
+        num: 10, symbol: "Ne", name: "氖", row: 2, col: 18 ,
+        category: "noble-gas", electronegativity: 0, year: 1898, flame: ,image: ,
 
     },
-    { num: 34, symbol: "Se", name: "硒", row: 4, col: 16 ,
-        category: "nonmetal", electronegativity: 2.55, year: , flame: ,image: ,
+    // 第三週期
+    { 
+        num: 11, symbol: "Na", name: "鈉", row: 3, col: 1 ,
+        category: "alkali-metal", electronegativity: 0.93, year: 1807, flame: ,image: ,
 
     },
-    { num: 35, symbol: "Br", name: "溴", row: 4, col: 17 ,
-        category: "nonmetal", electronegativity: 2.96, year: , flame: ,image: ,
+    { 
+        num: 12, symbol: "Mg", name: "鎂", row: 3, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 1.31, year: 1808, flame: ,image: ,
 
     },
-    { num: 36, symbol: "Kr", name: "氪", row: 4, col: 18 ,
-        category: "noble-gas", electronegativity: 3.00, year: , flame: ,image: ,
+    { 
+        num: 13, symbol: "Al", name: "鋁", row: 3, col: 13 ,
+        category: "post-transition-metal", electronegativity: 1.61, year: 1825, flame: ,image: ,
+
+    },
+    { 
+        num: 14, symbol: "Si", name: "矽", row: 3, col: 14 ,
+        category: "metalloid", electronegativity: 1.90, year: 1824, flame: ,image: ,
+
+    },
+    { 
+        num: 15, symbol: "P", name: "磷", row: 3, col: 15 ,
+        category: "nonmetal", electronegativity: 2.19, year: 1669, flame: ,image: ,
+
+    },
+    { 
+        num: 16, symbol: "S", name: "硫", row: 3, col: 16 ,
+        category: "nonmetal", electronegativity: 2.58, year: 0, flame: ,image: ,
+
+    },
+    { 
+        num: 17, symbol: "Cl", name: "氯", row: 3, col: 17 ,
+        category: "nonmetal", electronegativity: 3.16, year: 1774, flame: ,image: ,
+
+    },
+    { 
+        num: 18, symbol: "Ar", name: "氬", row: 3, col: 18 ,
+        category: "noble-gas", electronegativity: 0, year: 1894, flame: ,image: ,
+
+    },
+    // 第四週期
+    { 
+        num: 19, symbol: "K", name: "鉀", row: 4, col: 1 ,
+        category: "alkali-metal", electronegativity: 0.82, year: 1807, flame: ,image: ,
+
+    },
+    { 
+        num: 20, symbol: "Ca", name: "鈣", row: 4, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 1.00, year: 1808, flame: ,image: ,
+
+    },
+    { 
+        num: 21, symbol: "Sc", name: "鈧", row: 4, col: 3 ,
+        category: "transition-metal", electronegativity: 1.36, year: 1879, flame: ,image: ,
+
+    },
+    { 
+        num: 22, symbol: "Ti", name: "鈦", row: 4, col: 4 ,
+        category: "transition-metal", electronegativity: 1.54, year: 1791, flame: ,image: ,
+
+    },
+    { 
+        num: 23, symbol: "V", name: "釩", row: 4, col: 5 ,
+        category: "transition-metal", electronegativity: 1.63, year: 1801, flame: ,image: ,
+
+    },
+    { 
+        num: 24, symbol: "Cr", name: "鉻", row: 4, col: 6 ,
+        category: "transition-metal", electronegativity: 1.66, year: 1797, flame: ,image: ,
+
+    },
+    { 
+        num: 25, symbol: "Mn", name: "錳", row: 4, col: 7 ,
+        category: "transition-metal", electronegativity: 1.55, year: 1774, flame: ,image: ,
+
+    },
+    { 
+        num: 26, symbol: "Fe", name: "鐵", row: 4, col: 8 ,
+        category: "transition-metal", electronegativity: 1.83, year: 0, flame: ,image: ,
+
+    },
+    { 
+        num: 27, symbol: "Co", name: "鈷", row: 4, col: 9 ,
+        category: "transition-metal", electronegativity: 1.88, year: 1735, flame: ,image: ,
+        desc: "曾被視為礦坑中的妖怪（Kobold），是維生素 B-12 的核心。",
+        link: "periodic-table/article27-cobalt.html", 
+        history: "名稱來自德國地下怪物kobold，因常伴隨砷出產而含劇毒，。",
+        usage: "用於製造藍色或具有磁性的合金，曾經鋰電池的正極",
+        funFact: "鈷也在隕石中被發現過"
+    },
+    { 
+        num: 28, symbol: "Ni", name: "鎳", row: 4, col: 10 ,
+        category: "transition-metal", electronegativity: 1.91, year: 1751, flame: ,image: ,
+
+    },
+    {
+        num: 29, symbol: "Cu", name: "銅", row: 4, col: 11 ,
+        category: "transition-metal", electronegativity: 1.90, year: 0, flame: ,image: ,
+
+    },
+    { 
+        num: 30, symbol: "Zn", name: "鋅", row: 4, col: 12 ,
+        category: "transition-metal", electronegativity: 1.65, year: 1746, flame: ,image: ,
+
+    },
+    { 
+        num: 31, symbol: "Ga", name: "鎵", row: 4, col: 13 ,
+        category: "post-transition-metal", electronegativity: 1.81, year: 1875, flame: ,image: ,
+
+    },
+    { 
+        num: 32, symbol: "Ge", name: "鍺", row: 4, col: 14 ,
+        category: "metalloid", electronegativity: 2.01, year: 1886, flame: ,image: ,
+
+    },
+    { 
+        num: 33, symbol: "As", name: "砷", row: 4, col: 15 ,
+        category: "metalloid", electronegativity: 2.18, year: 0, flame: ,image: ,
+
+    },
+    { 
+        num: 34, symbol: "Se", name: "硒", row: 4, col: 16 ,
+        category: "nonmetal", electronegativity: 2.55, year: 1817, flame: ,image: ,
+
+    },
+    { 
+        num: 35, symbol: "Br", name: "溴", row: 4, col: 17 ,
+        category: "nonmetal", electronegativity: 2.96, year: 1826, flame: ,image: ,
+
+    },
+    { 
+        num: 36, symbol: "Kr", name: "氪", row: 4, col: 18 ,
+        category: "noble-gas", electronegativity: 3.00, year: 1898, flame: ,image: ,
 
     },
     // 第五週期
-    { num: 37, symbol: "Rb", name: "銣", row: 5, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.82, year: , flame: ,image: ,
+    { 
+        num: 37, symbol: "Rb", name: "銣", row: 5, col: 1 ,
+        category: "alkali-metal", electronegativity: 0.82, year: 1861, flame: ,image: ,
 
     },
-    { num: 38, symbol: "Sr", name: "鍶", row: 5, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.95, year: , flame: ,image: ,
+    { 
+        num: 38, symbol: "Sr", name: "鍶", row: 5, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 0.95, year: 1790, flame: ,image: ,
 
     },
-    { num: 39, symbol: "Y", name: "釔", row: 5, col: 3 ,
-        category: "transition-metal", electronegativity: 1.22, year: , flame: ,image: ,
+    { 
+        num: 39, symbol: "Y", name: "釔", row: 5, col: 3 ,
+        category: "transition-metal", electronegativity: 1.22, year: 1794, flame: ,image: ,
 
     },
-    { num: 40, symbol: "Zr", name: "鋯", row: 5, col: 4 ,
-        category: "transition-metal", electronegativity: 1.33, year: , flame: ,image: ,
+    { 
+        num: 40, symbol: "Zr", name: "鋯", row: 5, col: 4 ,
+        category: "transition-metal", electronegativity: 1.33, year: 1789, flame: ,image: ,
 
     },
-    { num: 41, symbol: "Nb", name: "鈮", row: 5, col: 5 ,
-        category: "transition-metal", electronegativity: 1.60, year: , flame: ,image: ,
+    { 
+        num: 41, symbol: "Nb", name: "鈮", row: 5, col: 5 ,
+        category: "transition-metal", electronegativity: 1.60, year: 1801, flame: ,image: ,
 
     },
-    { num: 42, symbol: "Mo", name: "鉬", row: 5, col: 6 ,
-        category: "transition-metal", electronegativity: 2.16, year: , flame: ,image: ,
+    { 
+        num: 42, symbol: "Mo", name: "鉬", row: 5, col: 6 ,
+        category: "transition-metal", electronegativity: 2.16, year: 1778, flame: ,image: ,
 
     },
-    { num: 43, symbol: "Tc", name: "鎝", row: 5, col: 7 ,
-        category: "transition-metal", electronegativity: 1.90, year: , flame: ,image: ,
+    { 
+        num: 43, symbol: "Tc", name: "鎝", row: 5, col: 7 ,
+        category: "transition-metal", electronegativity: 1.90, year: 1937, flame: ,image: ,
 
     },
-    { num: 44, symbol: "Ru", name: "釕", row: 5, col: 8 ,
-        category: "transition-metal", electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 44, symbol: "Ru", name: "釕", row: 5, col: 8 ,
+        category: "transition-metal", electronegativity: 2.20, year: 1844, flame: ,image: ,
 
     },
-    { num: 45, symbol: "Rh", name: "銠", row: 5, col: 9 ,
-        category: "transition-metal", electronegativity: 2.28, year: , flame: ,image: ,
+    { 
+        num: 45, symbol: "Rh", name: "銠", row: 5, col: 9 ,
+        category: "transition-metal", electronegativity: 2.28, year: 1803, flame: ,image: ,
 
     },
-    { num: 46, symbol: "Pd", name: "鈀", row: 5, col: 10 ,
-        category: "transition-metal", electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 46, symbol: "Pd", name: "鈀", row: 5, col: 10 ,
+        category: "transition-metal", electronegativity: 2.20, year: 1803, flame: ,image: ,
 
     },
-    { num: 47, symbol: "Ag", name: "銀", row: 5, col: 11 ,
-        category: "transition-metal", electronegativity: 1.93, year: , flame: ,image: ,
+    { 
+        num: 47, symbol: "Ag", name: "銀", row: 5, col: 11 ,
+        category: "transition-metal", electronegativity: 1.93, year: 0, flame: ,image: ,
 
     },
-    { num: 48, symbol: "Cd", name: "鎘", row: 5, col: 12 ,
-        category: "transition-metal", electronegativity: 1.69, year: , flame: ,image: ,
+    { 
+        num: 48, symbol: "Cd", name: "鎘", row: 5, col: 12 ,
+        category: "transition-metal", electronegativity: 1.69, year: 1817, flame: ,image: ,
 
     },
-    { num: 49, symbol: "In", name: "銦", row: 5, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.78, year: , flame: ,image: ,
+    { 
+        num: 49, symbol: "In", name: "銦", row: 5, col: 13 ,
+        category: "post-transition-metal", electronegativity: 1.78, year: 1863, flame: ,image: ,
 
     },
-    { num: 50, symbol: "Sn", name: "錫", row: 5, col: 14 ,
-        category: "post-transition-metal", electronegativity: 1.96, year: , flame: ,image: ,
+    { 
+        num: 50, symbol: "Sn", name: "錫", row: 5, col: 14 ,
+        category: "post-transition-metal", electronegativity: 1.96, year: 0, flame: ,image: ,
 
     },
-    {num: 51, symbol: "Sb", name: "銻", row: 5, col: 15 ,
-        category: "metalloid", electronegativity: 2.05, year: , flame: ,image: ,
+    {
+        num: 51, symbol: "Sb", name: "銻", row: 5, col: 15 ,
+        category: "metalloid", electronegativity: 2.05, year: 0, flame: ,image: ,
         desc: "傳說中剋死僧侶的『反僧侶』金屬。", 
         link: "periodic-table/article51-antimony.html",
         history: "名稱來自 'Anti-monk'，因早期鍊金僧侶頻繁中毒而得名。",
         usage: "主要用於阻燃劑、電池合金，古代曾作眼影。",
         funFact: "17世紀流行的『恆久藥丸』排泄後可洗淨重複使用。"
     },
-    { num: 52, symbol: "Te", name: "碲", row: 5, col: 16 ,
-        category: "metalloid", electronegativity: 2.10, year: , flame: ,image: ,
+    { 
+        num: 52, symbol: "Te", name: "碲", row: 5, col: 16 ,
+        category: "metalloid", electronegativity: 2.10, year: 1782, flame: ,image: ,
 
     },
-    { num: 53, symbol: "I", name: "碘", row: 5, col: 17 ,
-        category: "nonmetal", electronegativity: 2.66, year: , flame: ,image: ,
+    { 
+        num: 53, symbol: "I", name: "碘", row: 5, col: 17 ,
+        category: "nonmetal", electronegativity: 2.66, year: 1811, flame: ,image: ,
 
     },
-    { num: 54, symbol: "Xe", name: "氙", row: 5, col: 18 ,
-        category: "noble-gas", electronegativity: 2.60, year: , flame: ,image: ,
+    { 
+        num: 54, symbol: "Xe", name: "氙", row: 5, col: 18 ,
+        category: "noble-gas", electronegativity: 2.60, year: 1898, flame: ,image: ,
 
     },
     // 第六週期
-    { num: 55, symbol: "Cs", name: "銫", row: 6, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.79, year: , flame: ,image: ,
+    { 
+        num: 55, symbol: "Cs", name: "銫", row: 6, col: 1 ,
+        category: "alkali-metal", electronegativity: 0.79, year: 1860, flame: ,image: ,
 
     },
-    { num: 56, symbol: "Ba", name: "鋇", row: 6, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.89, year: , flame: ,image: ,
+    { 
+        num: 56, symbol: "Ba", name: "鋇", row: 6, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 0.89, year: 1808, flame: ,image: ,
 
     },
-    { num: 57, symbol: "La", name: "鑭", row: 9, col: 4 ,
-        category: "lanthanide", electronegativity: 1.10, year: , flame: ,image: ,
+    { 
+        num: 57, symbol: "La", name: "鑭", row: 9, col: 4 ,
+        category: "lanthanide", electronegativity: 1.10, year: 1839, flame: ,image: ,
 
     }, // 鑭系開始
-    { num: 58, symbol: "Ce", name: "鈰", row: 9, col: 5 ,
-        category: "lanthanide", electronegativity: 1.12, year: , flame: ,image: ,
+    { 
+        num: 58, symbol: "Ce", name: "鈰", row: 9, col: 5 ,
+        category: "lanthanide", electronegativity: 1.12, year: 1803, flame: ,image: ,
 
     },
-    { num: 59, symbol: "Pr", name: "鐠", row: 9, col: 6 ,
-        category: "lanthanide", electronegativity: 1.13, year: , flame: ,image: ,
+    { 
+        num: 59, symbol: "Pr", name: "鐠", row: 9, col: 6 ,
+        category: "lanthanide", electronegativity: 1.13, year: 1885, flame: ,image: ,
 
     },
-    { num: 60, symbol: "Nd", name: "釹", row: 9, col: 7 ,
-        category: "lanthanide", electronegativity: 1.14, year: , flame: ,image: ,
+    { 
+        num: 60, symbol: "Nd", name: "釹", row: 9, col: 7 ,
+        category: "lanthanide", electronegativity: 1.14, year: 1885, flame: ,image: ,
 
     },
-    { num: 61, symbol: "Pm", name: "鉕", row: 9, col: 8 ,
-        category: "lanthanide", electronegativity: 1.13, year: , flame: ,image: ,
+    { 
+        num: 61, symbol: "Pm", name: "鉕", row: 9, col: 8 ,
+        category: "lanthanide", electronegativity: 1.13, year: 1945, flame: ,image: ,
 
     },
-    { num: 62, symbol: "Sm", name: "釤", row: 9, col: 9 ,
-        category: "lanthanide", electronegativity: 1.17, year: , flame: ,image: ,
+    {
+        num: 62, symbol: "Sm", name: "釤", row: 9, col: 9 ,
+        category: "lanthanide", electronegativity: 1.17, year: 1879, flame: ,image: ,
 
     },
-    { num: 63, symbol: "Eu", name: "銪", row: 9, col: 10 ,
-        category: "lanthanide", electronegativity: 1.20, year: , flame: ,image: ,
+    { 
+        num: 63, symbol: "Eu", name: "銪", row: 9, col: 10 ,
+        category: "lanthanide", electronegativity: 1.20, year: 1901, flame: ,image: ,
 
     },
-    { num: 64, symbol: "Gd", name: "釓", row: 9, col: 11 ,
-        category: "lanthanide", electronegativity: 1.20, year: , flame: ,image: ,
+    { 
+        num: 64, symbol: "Gd", name: "釓", row: 9, col: 11 ,
+        category: "lanthanide", electronegativity: 1.20, year: 1880, flame: ,image: ,
 
     },
-    { num: 65, symbol: "Tb", name: "鋱", row: 9, col: 12 ,
-        category: "lanthanide", electronegativity: 1.10, year: , flame: ,image: ,
+    { 
+        num: 65, symbol: "Tb", name: "鋱", row: 9, col: 12 ,
+        category: "lanthanide", electronegativity: 1.10, year: 1843, flame: ,image: ,
 
     },
-    { num: 66, symbol: "Dy", name: "鏑", row: 9, col: 13 ,
-        category: "lanthanide", electronegativity: 1.22, year: , flame: ,image: ,
+    { 
+        num: 66, symbol: "Dy", name: "鏑", row: 9, col: 13 ,
+        category: "lanthanide", electronegativity: 1.22, year: 1886, flame: ,image: ,
 
     },
-    { num: 67, symbol: "Ho", name: "鈥", row: 9, col: 14 ,
-        category: "lanthanide", electronegativity: 1.23, year: , flame: ,image: ,
+    { 
+        num: 67, symbol: "Ho", name: "鈥", row: 9, col: 14 ,
+        category: "lanthanide", electronegativity: 1.23, year: 1878, flame: ,image: ,
 
     },
-    { num: 68, symbol: "Er", name: "鉺", row: 9, col: 15 ,
-        category: "lanthanide", electronegativity: 1.24, year: , flame: ,image: ,
+    { 
+        num: 68, symbol: "Er", name: "鉺", row: 9, col: 15 ,
+        category: "lanthanide", electronegativity: 1.24, year: 1842, flame: ,image: ,
 
     },
-    { num: 69, symbol: "Tm", name: "銩", row: 9, col: 16 ,
-        category: "lanthanide", electronegativity: 1.25, year: , flame: ,image: ,
+    { 
+        num: 69, symbol: "Tm", name: "銩", row: 9, col: 16 ,
+        category: "lanthanide", electronegativity: 1.25, year: 1879, flame: ,image: ,
 
     },
-    { num: 70, symbol: "Yb", name: "鐿", row: 9, col: 17 ,
-        category: "lanthanide", electronegativity: 1.10, year: , flame: ,image: ,
+    { 
+        num: 70, symbol: "Yb", name: "鐿", row: 9, col: 17 ,
+        category: "lanthanide", electronegativity: 1.10, year: 1878, flame: ,image: ,
 
     },
-    { num: 71, symbol: "Lu", name: "鑥", row: 9, col: 18 ,
-        category: "lanthanide", electronegativity: 1.27, year: , flame: ,image: ,
+    { 
+        num: 71, symbol: "Lu", name: "鑥", row: 9, col: 18 ,
+        category: "lanthanide", electronegativity: 1.27, year: 1907, flame: ,image: ,
 
     },
-    { num: 72, symbol: "Hf", name: "鉿", row: 6, col: 4 ,
-        category: "transition-metal", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 72, symbol: "Hf", name: "鉿", row: 6, col: 4 ,
+        category: "transition-metal", electronegativity: 1.30, year: 1923, flame: ,image: ,
 
     },
-    { num: 73, symbol: "Ta", name: "鉭", row: 6, col: 5 ,
-        category: "transition-metal", electronegativity: 1.50, year: , flame: ,image: ,
+    { 
+        num: 73, symbol: "Ta", name: "鉭", row: 6, col: 5 ,
+        category: "transition-metal", electronegativity: 1.50, year:1802 , flame: ,image: ,
 
     },
-    { num: 74, symbol: "W", name: "鎢", row: 6, col: 6 ,
-        category: "transition-metal", electronegativity: 2.36, year: , flame: ,image: ,
+    { 
+        num: 74, symbol: "W", name: "鎢", row: 6, col: 6 ,
+        category: "transition-metal", electronegativity: 2.36, year: 1783, flame: ,image: ,
 
     },
-    { num: 75, symbol: "Re", name: "錸", row: 6, col: 7 ,
-        category: "transition-metal", electronegativity: 1.90, year: , flame: ,image: ,
+    { 
+        num: 75, symbol: "Re", name: "錸", row: 6, col: 7 ,
+        category: "transition-metal", electronegativity: 1.90, year: 1925, flame: ,image: ,
 
     },
-    { num: 76, symbol: "Os", name: "鋨", row: 6, col: 8 ,
-        category: "transition-metal", electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 76, symbol: "Os", name: "鋨", row: 6, col: 8 ,
+        category: "transition-metal", electronegativity: 2.20, year: 1803, flame: ,image: ,
 
     },
-    { num: 77, symbol: "Ir", name: "銥", row: 6, col: 9 ,
-        category: "transition-metal", electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 77, symbol: "Ir", name: "銥", row: 6, col: 9 ,
+        category: "transition-metal", electronegativity: 2.20, year: 1803, flame: ,image: ,
 
     },
-    { num: 78, symbol: "Pt", name: "鉑", row: 6, col: 10 ,
-        category: "transition-metal", electronegativity: 2.28, year: , flame: ,image: ,
+    { 
+        num: 78, symbol: "Pt", name: "鉑", row: 6, col: 10 ,
+        category: "transition-metal", electronegativity: 2.28, year: 1735, flame: ,image: ,
 
     },
-    { num: 79, symbol: "Au", name: "金", row: 6, col: 11 ,
-        category: "transition-metal", electronegativity: 2.54, year: , flame: ,image: ,
+    { 
+        num: 79, symbol: "Au", name: "金", row: 6, col: 11 ,
+        category: "transition-metal", electronegativity: 2.54, year: 0, flame: ,image: ,
 
     },
-    { num: 80, symbol: "Hg", name: "汞", row: 6, col: 12 ,
-        category: "transition-metal", electronegativity: 2.00, year: , flame: ,image: ,
+    { 
+        num: 80, symbol: "Hg", name: "汞", row: 6, col: 12 ,
+        category: "transition-metal", electronegativity: 2.00, year: 0, flame: ,image: ,
 
     },
-    { num: 81, symbol: "Tl", name: "鉈", row: 6, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.62, year: , flame: ,image: ,
+    { 
+        num: 81, symbol: "Tl", name: "鉈", row: 6, col: 13 ,
+        category: "post-transition-metal", electronegativity: 1.62, year: 1861, flame: ,image: ,
 
     },
-    { num: 82, symbol: "Pb", name: "鉛", row: 6, col: 14 ,
-        category: "post-transition-metal", electronegativity: 2.33, year: , flame: ,image: ,
+    { 
+        num: 82, symbol: "Pb", name: "鉛", row: 6, col: 14 ,
+        category: "post-transition-metal", electronegativity: 2.33, year: 0, flame: ,image: ,
 
     },
-    { num: 83, symbol: "Bi", name: "鉍", row: 6, col: 15 ,
-        category: "post-transition-metal", electronegativity: 2.02, year: , flame: ,image: ,
+    { 
+        num: 83, symbol: "Bi", name: "鉍", row: 6, col: 15 ,
+        category: "post-transition-metal", electronegativity: 2.02, year: 0, flame: ,image: ,
 
     },
-    { num: 84, symbol: "Po", name: "釙", row: 6, col: 16 ,
-        category: "metalloid", electronegativity: 2.00, year: , flame: ,image: ,
+    { 
+        num: 84, symbol: "Po", name: "釙", row: 6, col: 16 ,
+        category: "metalloid", electronegativity: 2.00, year: 1898, flame: ,image: ,
 
     },
-    { num: 85, symbol: "At", name: "砈", row: 6, col: 17 ,
-        category: "nonmetal", electronegativity: 2.20, year: , flame: ,image: ,
+    { 
+        num: 85, symbol: "At", name: "砈", row: 6, col: 17 ,
+        category: "nonmetal", electronegativity: 2.20, year: 1940, flame: ,image: ,
 
     },
-    { num: 86, symbol: "Rn", name: "氡", row: 6, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 86, symbol: "Rn", name: "氡", row: 6, col: 18 ,
+        category: "noble-gas", electronegativity: 0, year: 1900, flame: ,image: ,
 
     },
     // 第七週期
-    { num: 87, symbol: "Fr", name: "鍅", row: 7, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.70, year: , flame: ,image: ,
+    { 
+        num: 87, symbol: "Fr", name: "鍅", row: 7, col: 1 ,
+        category: "alkali-metal", electronegativity: 0.70, year: 1939, flame: ,image: ,
 
     },
-    { num: 88, symbol: "Ra", name: "鐳", row: 7, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.90, year: , flame: ,image: ,
+    { 
+        num: 88, symbol: "Ra", name: "鐳", row: 7, col: 2 ,
+        category: "alkaline-earth-metal", electronegativity: 0.90, year: 1898, flame: ,image: ,
 
     },
-    { num: 89, symbol: "Ac", name: "錒", row: 10, col: 4 ,
-        category: "actinide", electronegativity: 1.10, year: , flame: ,image: ,
+    { 
+        num: 89, symbol: "Ac", name: "錒", row: 10, col: 4 ,
+        category: "actinide", electronegativity: 1.10, year: 1899, flame: ,image: ,
 
     }, // 錒系開始
-    { num: 90, symbol: "Th", name: "釷", row: 10, col: 5 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 90, symbol: "Th", name: "釷", row: 10, col: 5 ,
+        category: "actinide", electronegativity: 1.30, year: 1828, flame: ,image: ,
 
     },
-    { num: 91, symbol: "Pa", name: "鏷", row: 10, col: 6 ,
-        category: "actinide", electronegativity: 1.50, year: , flame: ,image: ,
+    { 
+        num: 91, symbol: "Pa", name: "鏷", row: 10, col: 6 ,
+        category: "actinide", electronegativity: 1.50, year: 1913, flame: ,image: ,
 
     },
-    { num: 92, symbol: "U", name: "鈾", row: 10, col: 7 ,
-        category: "actinide", electronegativity: 1.38, year: , flame: ,image: ,
+    { 
+        num: 92, symbol: "U", name: "鈾", row: 10, col: 7 ,
+        category: "actinide", electronegativity: 1.38, year: 1789, flame: ,image: ,
 
     },
-    { num: 93, symbol: "Np", name: "錼", row: 10, col: 8 ,
-        category: "actinide", electronegativity: 1.36, year: , flame: ,image: ,
+    { 
+        num: 93, symbol: "Np", name: "錼", row: 10, col: 8 ,
+        category: "actinide", electronegativity: 1.36, year: 1940, flame: ,image: ,
 
     },
-    { num: 94, symbol: "Pu", name: "鈽", row: 10, col: 9 ,
-        category: "actinide", electronegativity: 1.28, year: , flame: ,image: ,
+    { 
+        num: 94, symbol: "Pu", name: "鈽", row: 10, col: 9 ,
+        category: "actinide", electronegativity: 1.28, year: 1940, flame: ,image: ,
 
     },
-    { num: 95, symbol: "Am", name: "鋂", row: 10, col: 10 ,
-        category: "actinide", electronegativity: 1.13, year: , flame: ,image: ,
+    { 
+        num: 95, symbol: "Am", name: "鋂", row: 10, col: 10 ,
+        category: "actinide", electronegativity: 1.13, year: 1944, flame: ,image: ,
 
     },
-    { num: 96, symbol: "Cm", name: "鋦", row: 10, col: 11 ,
-        category: "actinide", electronegativity: 1.28, year: , flame: ,image: ,
+    { 
+        num: 96, symbol: "Cm", name: "鋦", row: 10, col: 11 ,
+        category: "actinide", electronegativity: 1.28, year: 1944, flame: ,image: ,
 
     },
-    { num: 97, symbol: "Bk", name: "鉳", row: 10, col: 12 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 97, symbol: "Bk", name: "鉳", row: 10, col: 12 ,
+        category: "actinide", electronegativity: 1.30, year: 1949, flame: ,image: ,
 
     },
-    { num: 98, symbol: "Cf", name: "鉲", row: 10, col: 13 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 98, symbol: "Cf", name: "鉲", row: 10, col: 13 ,
+        category: "actinide", electronegativity: 1.30, year: 1950, flame: ,image: ,
 
     },
-    { num: 99, symbol: "Es", name: "鑀", row: 10, col: 14 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 99, symbol: "Es", name: "鑀", row: 10, col: 14 ,
+        category: "actinide", electronegativity: 1.30, year: 1952, flame: ,image: ,
 
     },
-    { num: 100, symbol: "Fm", name: "鐨", row: 10, col: 15 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 100, symbol: "Fm", name: "鐨", row: 10, col: 15 ,
+        category: "actinide", electronegativity: 1.30, year: 1953, flame: ,image: ,
 
     },
-    { num: 101, symbol: "Md", name: "鍆", row: 10, col: 16 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 101, symbol: "Md", name: "鍆", row: 10, col: 16 ,
+        category: "actinide", electronegativity: 1.30, year: 1955, flame: ,image: ,
 
     },
-    { num: 102, symbol: "No", name: "鍩", row: 10, col: 17 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 102, symbol: "No", name: "鍩", row: 10, col: 17 ,
+        category: "actinide", electronegativity: 1.30, year: 1958, flame: ,image: ,
 
     },
-    { num: 103, symbol: "Lr", name: "鐒", row: 10, col: 18 ,
-        category: "actinide", electronegativity: 1.30, year: , flame: ,image: ,
+    { 
+        num: 103, symbol: "Lr", name: "鐒", row: 10, col: 18 ,
+        category: "actinide", electronegativity: 1.30, year: 1961, flame: ,image: ,
 
     },
-    { num: 104, symbol: "Rf", name: "鑪", row: 7, col: 4 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 104, symbol: "Rf", name: "鑪", row: 7, col: 4 ,
+        category: "transition-metal", electronegativity: 0, year: 1964, flame: ,image: ,
 
     },
-    { num: 105, symbol: "Db", name: "𨧀", row: 7, col: 5 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 105, symbol: "Db", name: "𨧀", row: 7, col: 5 ,
+        category: "transition-metal", electronegativity: 0, year: 1967, flame: ,image: ,
 
     },
-    { num: 106, symbol: "Sg", name: "𨭎", row: 7, col: 6 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 106, symbol: "Sg", name: "𨭎", row: 7, col: 6 ,
+        category: "transition-metal", electronegativity: 0, year: 1974, flame: ,image: ,
 
     },
-    { num: 107, symbol: "Bh", name: "𨨏", row: 7, col: 7 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 107, symbol: "Bh", name: "𨨏", row: 7, col: 7 ,
+        category: "transition-metal", electronegativity: 0, year: 1981, flame: ,image: ,
 
     },
-    { num: 108, symbol: "Hs", name: "𨭆", row: 7, col: 8 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 108, symbol: "Hs", name: "𨭆", row: 7, col: 8 ,
+        category: "transition-metal", electronegativity: 0, year: 1984, flame: ,image: ,
 
     },
-    { num: 109, symbol: "Mt", name: "䥑", row: 7, col: 9 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 109, symbol: "Mt", name: "䥑", row: 7, col: 9 ,
+        category: "transition-metal", electronegativity: 0, year: 1982, flame: ,image: ,
 
     },
-    { num: 110, symbol: "Ds", name: "鐽", row: 7, col: 10 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 110, symbol: "Ds", name: "鐽", row: 7, col: 10 ,
+        category: "transition-metal", electronegativity: 0, year: 1994, flame: ,image: ,
 
     },
-    { num: 111, symbol: "Rg", name: "錀", row: 7, col: 11 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 111, symbol: "Rg", name: "錀", row: 7, col: 11 ,
+        category: "transition-metal", electronegativity: 0, year: 1994, flame: ,image: ,
 
     },
-    { num: 112, symbol: "Cn", name: "鎶", row: 7, col: 12 ,
-        category: "transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 112, symbol: "Cn", name: "鎶", row: 7, col: 12 ,
+        category: "transition-metal", electronegativity: 0, year: 1996, flame: ,image: ,
 
     },
-    { num: 113, symbol: "Nh", name: "鉨", row: 7, col: 13 ,
-        category: "post-transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 113, symbol: "Nh", name: "鉨", row: 7, col: 13 ,
+        category: "post-transition-metal", electronegativity: 0, year: 2004, flame: ,image: ,
 
     },
-    { num: 114, symbol: "Fl", name: "鈇", row: 7, col: 14 ,
-        category: "post-transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 114, symbol: "Fl", name: "鈇", row: 7, col: 14 ,
+        category: "post-transition-metal", electronegativity: 0, year: 1999, flame: ,image: ,
 
     },
-    { num: 115, symbol: "Mc", name: "鏌", row: 7, col: 15 ,
-        category: "post-transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 115, symbol: "Mc", name: "鏌", row: 7, col: 15 ,
+        category: "post-transition-metal", electronegativity: 0, year: 2003, flame: ,image: ,
 
     },
-    { num: 116, symbol: "Lv", name: "鉝", row: 7, col: 16 ,
-        category: "post-transition-metal", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 116, symbol: "Lv", name: "鉝", row: 7, col: 16 ,
+        category: "post-transition-metal", electronegativity: 0, year: 2000, flame: ,image: ,
 
     },
-    { num: 117, symbol: "Ts", name: "鿬", row: 7, col: 17 ,
-        category: "nonmetal", electronegativity: 2.0, year: , flame: ,image: ,
+    { 
+        num: 117, symbol: "Ts", name: "鿬", row: 7, col: 17 ,
+        category: "nonmetal", electronegativity: 2.0, year: 2010, flame: ,image: ,
 
     },
-    { num: 118, symbol: "Og", name: "鿫", row: 7, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: , flame: ,image: ,
+    { 
+        num: 118, symbol: "Og", name: "鿫", row: 7, col: 18 ,
+        category: "noble-gas", electronegativity: 0, year: 2006, flame: ,image: ,
 
     }
 ];
