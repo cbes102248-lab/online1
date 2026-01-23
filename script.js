@@ -170,7 +170,7 @@ const elements = [//週期表表格位置與彈窗訊息
     // 第二週期
     { 
         num: 3, symbol: "Li", name: "鋰", row: 2, col: 1 ,
-        category:  "alkali-metal", electronegativity: 0.98, year: 1817, flame:(220,20,60) ,image: "images/atom/Li.jpg",
+        category:  "alkali-metal", electronegativity: 0.98, year: 1817, flame:"rgb(220,20,60)" ,image: "images/atom/Li.jpg",
     },
     { 
         num: 4, symbol: "Be", name: "鈹", row: 2, col: 2 ,
@@ -210,7 +210,7 @@ const elements = [//週期表表格位置與彈窗訊息
     // 第三週期
     { 
         num: 11, symbol: "Na", name: "鈉", row: 3, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.93, year: 1807, flame: (255,215,0),image: "images/atom/Na.jpg",
+        category: "alkali-metal", electronegativity: 0.93, year: 1807, flame: "rgb(255,215,0)",image: "images/atom/Na.jpg",
 
     },
     { 
@@ -251,12 +251,12 @@ const elements = [//週期表表格位置與彈窗訊息
     // 第四週期
     { 
         num: 19, symbol: "K", name: "鉀", row: 4, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.82, year: 1807, flame:(216,191,216) ,image: "images/atom/K.jpg",
+        category: "alkali-metal", electronegativity: 0.82, year: 1807, flame:"rgb(216,191,216)" ,image: "images/atom/K.jpg",
 
     },
     { 
         num: 20, symbol: "Ca", name: "鈣", row: 4, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.00, year: 1808, flame:(255,69,0) ,image: "images/atom/Ca.jpg",
+        category: "alkaline-earth-metal", electronegativity: 1.00, year: 1808, flame:"rgb(255,69,0)" ,image: "images/atom/Ca.jpg",
 
     },
     { 
@@ -286,7 +286,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 26, symbol: "Fe", name: "鐵", row: 4, col: 8 ,
-        category: "transition-metal", electronegativity: 1.83, year: 0, flame: (255,165,0),image: "images/atom/Fe.jpg",
+        category: "transition-metal", electronegativity: 1.83, year: 0, flame: "rgb(255,165,0)",image: "images/atom/Fe.jpg",
 
     },
     { 
@@ -305,7 +305,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     {
         num: 29, symbol: "Cu", name: "銅", row: 4, col: 11 ,
-        category: "transition-metal", electronegativity: 1.90, year: 0, flame:(0,255,255) ,image: "images/atom/Cu.jpg",
+        category: "transition-metal", electronegativity: 1.90, year: 0, flame:"rgb(0,255,255)" ,image: "images/atom/Cu.jpg",
 
     },
     { 
@@ -346,12 +346,12 @@ const elements = [//週期表表格位置與彈窗訊息
     // 第五週期
     { 
         num: 37, symbol: "Rb", name: "銣", row: 5, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.82, year: 1861, flame: (148,0,211) ,image: "images/atom/Rb.jpg",
+        category: "alkali-metal", electronegativity: 0.82, year: 1861, flame: "rgb(148,0,211)" ,image: "images/atom/Rb.jpg",
 
     },
     { 
         num: 38, symbol: "Sr", name: "鍶", row: 5, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.95, year: 1790, flame:(255,0,0) ,image: "images/atom/Sr.jpg",
+        category: "alkaline-earth-metal", electronegativity: 0.95, year: 1790, flame:"rgb(255,0,0)" ,image: "images/atom/Sr.jpg",
 
     },
     { 
@@ -406,7 +406,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 49, symbol: "In", name: "銦", row: 5, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.78, year: 1863, flame:(75,0,130) ,image: "images/atom/In.jpg",
+        category: "post-transition-metal", electronegativity: 1.78, year: 1863, flame:"rgb(75,0,130)" ,image: "images/atom/In.jpg",
 
     },
     { 
@@ -441,12 +441,12 @@ const elements = [//週期表表格位置與彈窗訊息
     // 第六週期
     { 
         num: 55, symbol: "Cs", name: "銫", row: 6, col: 1 ,
-        category: "alkali-metal", electronegativity: 0.79, year: 1860, flame: (0,0,255) ,image: "images/atom/Cs.jpg",
+        category: "alkali-metal", electronegativity: 0.79, year: 1860, flame: "rgb(0,0,255)" ,image: "images/atom/Cs.jpg",
 
     },
     { 
         num: 56, symbol: "Ba", name: "鋇", row: 6, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.89, year: 1808, flame: (144,238,144) ,image: "images/atom/Ba.jpg",
+        category: "alkaline-earth-metal", electronegativity: 0.89, year: 1808, flame: "rgb(144,238,144)" ,image: "images/atom/Ba.jpg",
 
     },
     { 
@@ -571,7 +571,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 81, symbol: "Tl", name: "鉈", row: 6, col: 13 ,
-        category: "post-transition-metal", electronegativity: 1.62, year: 1861, flame:(0,255,0) ,image: "images/atom/Tl.jpg",
+        category: "post-transition-metal", electronegativity: 1.62, year: 1861, flame:"rgb(0,255,0)" ,image: "images/atom/Tl.jpg",
 
     },
     { 
@@ -607,7 +607,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 88, symbol: "Ra", name: "鐳", row: 7, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 0.90, year: 1898, flame:(255,0,0) ,image: "images/atom/Ra.jpg",
+        category: "alkaline-earth-metal", electronegativity: 0.90, year: 1898, flame:"rgb(255,0,0)" ,image: "images/atom/Ra.jpg",
 
     },
     { 
