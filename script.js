@@ -94,7 +94,7 @@ function initPeriodicTable() { // 週期表生成函式
         } 
         else if (mode === 'flame') {
             // 進入焰色模式時，統一背景為深色
-            bgColor = "#222"; 
+            bgColor = "#332f2fff"; 
             box.style.color = "#ffffff"; // 字體改成白色
             if (el.flame && el.flame !== 'none') {
                 // 設定發光效果與邊框
@@ -115,11 +115,11 @@ function initPeriodicTable() { // 週期表生成函式
                 bgColor = "#5D4037"; 
                 box.style.color = "#fff";
             } else if (el.year > 0 && el.year <= 1661) {
-                displayText = "鍊金術時期"+ yearDisplay;
+                displayText = "早期鍊金"+ yearDisplay;
                 bgColor = "#D4AF37"; 
                 box.style.color = "#fff";
             } else if (el.year > 1661 && el.year <= 1801) {
-                displayText = "啟蒙時代"+ yearDisplay;
+                displayText = `<span style="font-size: 0.58rem; letter-spacing: -1px; white-space: nowrap; display: block;">練金與啟蒙</span>` + yearDisplay;
                 bgColor = "#f08436ff"; 
                 box.style.color = "#000";
             } else if (el.year > 1801 && el.year <= 1869) {
@@ -127,7 +127,7 @@ function initPeriodicTable() { // 週期表生成函式
                 bgColor = "#708090"; 
                 box.style.color = "#fff";
             } else if (el.year > 1869 && el.year <= 1927) {
-                displayText = "週期表時期"+ yearDisplay;
+                displayText = "週期尋覓"+ yearDisplay;
                 bgColor = "#65e463ff"; 
                 box.style.color = "#fff";
             } else {
@@ -200,7 +200,7 @@ const elements = [//週期表表格位置與彈窗訊息
      },
     {
         num: 2, symbol: "He", name: "氦", row: 1, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: 1868, flame: "none",image: "images/atom/He.jpg",
+        category: "noble-gas", electronegativity: 0, year: 1895, flame: "none",image: "images/atom/He.jpg",
     },
     // 第二週期
     { 
@@ -209,7 +209,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 4, symbol: "Be", name: "鈹", row: 2, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.57, year: 1798, flame: "none",image: "images/atom/Be.jpg",
+        category: "alkaline-earth-metal", electronegativity: 1.57, year: 1797, flame: "none",image: "images/atom/Be.jpg",
 
     },
     { 
@@ -219,7 +219,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 6, symbol: "C", name: "碳", row: 2, col: 14 ,
-        category: "nonmetal", electronegativity: 2.55, year: 0, flame:"none" ,image: "images/atom/C.jpg",
+        category: "nonmetal", electronegativity: 2.55, year: -7000, flame:"none" ,image: "images/atom/C.jpg",
 
     },
     { 
@@ -250,7 +250,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 12, symbol: "Mg", name: "鎂", row: 3, col: 2 ,
-        category: "alkaline-earth-metal", electronegativity: 1.31, year: 1808, flame:"none" ,image: "images/atom/Mg.jpg",
+        category: "alkaline-earth-metal", electronegativity: 1.31, year: 1755, flame:"none" ,image: "images/atom/Mg.jpg",
 
     },
     { 
@@ -270,7 +270,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 16, symbol: "S", name: "硫", row: 3, col: 16 ,
-        category: "nonmetal", electronegativity: 2.58, year: 0, flame:"none" ,image: "images/atom/S.jpg",
+        category: "nonmetal", electronegativity: 2.58, year: -7000, flame:"none" ,image: "images/atom/S.jpg",
 
     },
     { 
@@ -311,7 +311,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 24, symbol: "Cr", name: "鉻", row: 4, col: 6 ,
-        category: "transition-metal", electronegativity: 1.66, year: 1797, flame:"none" ,image: "images/atom/Cr.jpg",
+        category: "transition-metal", electronegativity: 1.66, year: 1798, flame:"none" ,image: "images/atom/Cr.jpg",
 
     },
     { 
@@ -321,7 +321,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 26, symbol: "Fe", name: "鐵", row: 4, col: 8 ,
-        category: "transition-metal", electronegativity: 1.83, year: 0, flame: "rgb(255,165,0)",image: "images/atom/Fe.jpg",
+        category: "transition-metal", electronegativity: 1.83, year: -2500, flame: "rgb(255,165,0)",image: "images/atom/Fe.jpg",
 
     },
     { 
@@ -340,7 +340,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     {
         num: 29, symbol: "Cu", name: "銅", row: 4, col: 11 ,
-        category: "transition-metal", electronegativity: 1.90, year: 0, flame:"rgb(0,255,255)" ,image: "images/atom/Cu.jpg",
+        category: "transition-metal", electronegativity: 1.90, year: -7000, flame:"rgb(0,255,255)" ,image: "images/atom/Cu.jpg",
 
     },
     { 
@@ -360,7 +360,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 33, symbol: "As", name: "砷", row: 4, col: 15 ,
-        category: "metalloid", electronegativity: 2.18, year: 0, flame:"none" ,image: "images/atom/As.jpg",
+        category: "metalloid", electronegativity: 2.18, year: 1250, flame:"none" ,image: "images/atom/As.jpg",
 
     },
     { 
@@ -406,7 +406,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 42, symbol: "Mo", name: "鉬", row: 5, col: 6 ,
-        category: "transition-metal", electronegativity: 2.16, year: 1778, flame:"none" ,image: "images/atom/Mo.jpg",
+        category: "transition-metal", electronegativity: 2.16, year: 1781, flame:"none" ,image: "images/atom/Mo.jpg",
 
     },
     { 
@@ -431,7 +431,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 47, symbol: "Ag", name: "銀", row: 5, col: 11 ,
-        category: "transition-metal", electronegativity: 1.93, year: 0, flame:"none" ,image: "images/atom/Ag.jpg",
+        category: "transition-metal", electronegativity: 1.93, year: -3000, flame:"none" ,image: "images/atom/Ag.jpg",
 
     },
     { 
@@ -446,12 +446,12 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 50, symbol: "Sn", name: "錫", row: 5, col: 14 ,
-        category: "post-transition-metal", electronegativity: 1.96, year: 0, flame:"none" ,image: "images/atom/Sn.jpg",
+        category: "post-transition-metal", electronegativity: 1.96, year: -2100, flame:"none" ,image: "images/atom/Sn.jpg",
 
     },
     {
         num: 51, symbol: "Sb", name: "銻", row: 5, col: 15 ,
-        category: "metalloid", electronegativity: 2.05, year: 0, flame:"none" ,image: "images/atom/Sb.jpg",
+        category: "metalloid", electronegativity: 2.05, year: -1600, flame:"none" ,image: "images/atom/Sb.jpg",
         desc: "傳說中剋死僧侶的『反僧侶』金屬。", 
         link: "periodic-table/article51-antimony.html",
         history: "名稱來自 'Anti-monk'，因早期鍊金僧侶頻繁中毒而得名。",
@@ -541,7 +541,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 68, symbol: "Er", name: "鉺", row: 9, col: 15 ,
-        category: "lanthanide", electronegativity: 1.24, year: 1842, flame:"none" ,image: "images/atom/Er.jpg",
+        category: "lanthanide", electronegativity: 1.24, year: 1843, flame:"none" ,image: "images/atom/Er.jpg",
 
     },
     { 
@@ -596,12 +596,12 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 79, symbol: "Au", name: "金", row: 6, col: 11 ,
-        category: "transition-metal", electronegativity: 2.54, year: 0, flame:"none" ,image: "images/atom/Au.jpg",
+        category: "transition-metal", electronegativity: 2.54, year: -3000, flame:"none" ,image: "images/atom/Au.jpg",
 
     },
     { 
         num: 80, symbol: "Hg", name: "汞", row: 6, col: 12 ,
-        category: "transition-metal", electronegativity: 2.00, year: 0, flame:"none" ,image: "images/atom/Hg.jpg",
+        category: "transition-metal", electronegativity: 2.00, year: -1500, flame:"none" ,image: "images/atom/Hg.jpg",
 
     },
     { 
@@ -611,12 +611,12 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 82, symbol: "Pb", name: "鉛", row: 6, col: 14 ,
-        category: "post-transition-metal", electronegativity: 2.33, year: 0, flame:"none" ,image: "images/atom/Pb.jpg",
+        category: "post-transition-metal", electronegativity: 2.33, year: -1000, flame:"none" ,image: "images/atom/Pb.jpg",
 
     },
     { 
         num: 83, symbol: "Bi", name: "鉍", row: 6, col: 15 ,
-        category: "post-transition-metal", electronegativity: 2.02, year: 0, flame:"none" ,image: "images/atom/Bi.jpg",
+        category: "post-transition-metal", electronegativity: 2.02, year: 1753, flame:"none" ,image: "images/atom/Bi.jpg",
 
     },
     { 
@@ -652,7 +652,7 @@ const elements = [//週期表表格位置與彈窗訊息
     }, // 錒系開始
     { 
         num: 90, symbol: "Th", name: "釷", row: 10, col: 5 ,
-        category: "actinide", electronegativity: 1.30, year: 1828, flame:"none" ,image: "images/atom/Th.jpg",
+        category: "actinide", electronegativity: 1.30, year: 1829, flame:"none" ,image: "images/atom/Th.jpg",
 
     },
     { 
@@ -777,7 +777,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 115, symbol: "Mc", name: "鏌", row: 7, col: 15 ,
-        category: "post-transition-metal", electronegativity: 0, year: 2003, flame:"none" ,image: "images/atom/Mc.jpg",
+        category: "post-transition-metal", electronegativity: 0, year: 2004, flame:"none" ,image: "images/atom/Mc.jpg",
 
     },
     { 
