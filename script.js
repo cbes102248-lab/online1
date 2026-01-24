@@ -58,6 +58,7 @@ function loadPage(url) { // 自定義網頁載入函式
         });
 }
 function initPeriodicTable() { // 週期表生成函式
+    const container = document.querySelector('.periodic-table-container');
     const table = document.getElementById('periodicTable');
     const extraRows = document.getElementById('extraRows');
     const modal = document.getElementById('elementModal');
@@ -66,17 +67,16 @@ function initPeriodicTable() { // 週期表生成函式
     const mode = modeSelect ? modeSelect.value : 'standard';
     if (!table) return; // 如果這頁沒週期表，就不跑
     console.log(`偵測到週期表容器，模式：${mode}，開始渲染...`);
-    table.style.backgroundSize = "cover";
-    table.style.backgroundPosition = "center";
-    table.style.backgroundRepeat = "no-repeat";
+    container.style.backgroundSize = "cover";
+    container.style.backgroundPosition = "center";
     if (mode === 'standard') {
-        table.style.backgroundImage = "url('../imgs/standard_bg.jpg')";
+        container.style.backgroundImage = "url('../imgs/standard_bg.jpg')";
     } else if (mode === 'electronegativity') {
-        table.style.backgroundImage = "url('../imgs/electronegativity_bg.jpg')";
+        container.style.backgroundImage = "url('../imgs/electronegativity_bg.jpg')";
     } else if (mode === 'flame') {
-        table.style.backgroundImage = "url('../imgs/flame_bg.jpg')";
+        container.style.backgroundImage = "url('../imgs/flame_bg.jpg')";
     } else if (mode === 'year') {
-        table.style.backgroundImage = "url('../imgs/year_bg.jpg')";
+        container.style.backgroundImage = "url('../imgs/year_bg.jpg')";
     }
     table.innerHTML = '';
     if (extraRows) extraRows.innerHTML = '';
