@@ -272,13 +272,15 @@ body {
 }
 /* 週期表外層容器 控制週期表的背景、邊距與陰影 */
 .periodic-table-container {
-    margin: 40px auto;
+    margin: 0 auto 40px auto; 
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-top: none; 
+    border-radius: 0 0 10px 10px; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 1200px; /* 限制最大寬度 */
-    overflow-x: auto;  /* 當表格超出寬度允許水平捲動 */
+    max-width: 1200px; 
+    overflow-x: auto;  
 }
 /* 主週期表網格佈局 設定為 18 欄位，1fr 代表欄位會平均分配剩餘空間 */
 .periodic-table {
@@ -432,11 +434,15 @@ body {
 /* 讓選單容器有一點空間感 */
 .mode-selector {
     background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    display: inline-block; /* 讓背景只包圍文字與選單 */
-    margin: 20px auto;
+    padding: 10px 0; 
+    margin: 0; 
+    width: 100%; 
+    display: block; 
+    text-align: center;
+    border-radius: 8px 8px 0 0; 
+    border: 1px solid #ccc;     
+    border-bottom: none;        
+    box-sizing: border-box;   
 }
 #viewMode {
     border: 1.5px solid #1a73e8;

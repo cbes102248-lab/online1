@@ -184,7 +184,7 @@ function initPeriodicTable() { // 週期表生成函式
             const eras = [
                 { name: '西元前', color: '#5D4037' },
                 { name: '早期鍊金', color: '#D4AF37' },
-                { name: '鍊金啟蒙', color: '#f08436' },
+                { name: '鍊金與啟蒙', color: '#f08436' },
                 { name: '工業革命', color: '#708090' },
                 { name: '週期尋覓', color: '#65e463' },
                 { name: '量子化學', color: '#E0E0E0' }
