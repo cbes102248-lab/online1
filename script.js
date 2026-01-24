@@ -66,6 +66,9 @@ function initPeriodicTable() { // 週期表生成函式
     const mode = modeSelect ? modeSelect.value : 'standard';
     if (!table) return; // 如果這頁沒週期表，就不跑
     console.log(`偵測到週期表容器，模式：${mode}，開始渲染...`);
+    table.style.backgroundSize = "cover";
+    table.style.backgroundPosition = "center";
+    table.style.backgroundRepeat = "no-repeat";
     table.innerHTML = ''; // 清空舊的，避免重複生成
     if (extraRows) extraRows.innerHTML = '';
     elements.forEach(el => {
@@ -80,6 +83,7 @@ function initPeriodicTable() { // 週期表生成函式
         let bgColor = '';
         let bgImg = '';
         if (mode === 'standard') {
+            table.style.backgroundImage = "url('images/standard_bg.jpg')";
             box.classList.add(el.category); // 套用元素性質分類顏色
             // 標準模式下顯示原子圖片
             if (el.image) {
@@ -87,12 +91,14 @@ function initPeriodicTable() { // 週期表生成函式
             }
         } 
         else if (mode === 'electronegativity') {
+            table.style.backgroundImage = "url('images/electronegativity_bg.jpg')";
             displayText = el.electronegativity || 'N/A';
             // 電負度越高顏色越深 (以橘紅色系為基礎)
             const alpha = el.electronegativity ? (el.electronegativity / 4.5) : 0.1;
             bgColor = `rgba(255, 87, 34, ${alpha})`;
         } 
         else if (mode === 'flame') {
+            table.style.backgroundImage = "url('images/flame_bg.jpg')";
             // 進入焰色模式時，統一背景為深色
             bgColor = "#332f2fff"; 
             box.style.color = "#ffffff"; // 字體改成白色
@@ -109,6 +115,7 @@ function initPeriodicTable() { // 週期表生成函式
             }
         } 
         else if (mode === 'year') {
+            table.style.backgroundImage = "url('images/year_bg.jpg')";
             let yearDisplay = el.year <= 0 ? "" : `<br><span style="font-size: 0.6rem; opacity: 0.8;">(${el.year})</span>`;
             if (el.year <= 0) {
                 displayText = "西元前";
@@ -239,7 +246,7 @@ const elements = [//週期表表格位置與彈窗訊息
      },
     {
         num: 2, symbol: "He", name: "氦", row: 1, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: 1895, flame: "none",image: "images/atom/He.jpg",
+        category: "noble-gas", electronegativity: 0, year: 1895, flame: "rgb(255,200,150)",image: "images/atom/He.jpg",
     },
     // 第二週期
     { 
@@ -278,7 +285,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 10, symbol: "Ne", name: "氖", row: 2, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: 1898, flame:"none" ,image: "images/atom/Ne.jpg",
+        category: "noble-gas", electronegativity: 0, year: 1898, flame:"rgb(255,80,0)" ,image: "images/atom/Ne.jpg",
 
     },
     // 第三週期
@@ -319,7 +326,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 18, symbol: "Ar", name: "氬", row: 3, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: 1894, flame:"none" ,image: "images/atom/Ar.jpg",
+        category: "noble-gas", electronegativity: 0, year: 1894, flame:"rgb(180,200,255)" ,image: "images/atom/Ar.jpg",
 
     },
     // 第四週期
@@ -414,7 +421,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 36, symbol: "Kr", name: "氪", row: 4, col: 18 ,
-        category: "noble-gas", electronegativity: 3.00, year: 1898, flame:"none" ,image: "images/atom/Kr.jpg",
+        category: "noble-gas", electronegativity: 3.00, year: 1898, flame:"rgb(200,180,255)" ,image: "images/atom/Kr.jpg",
 
     },
     // 第五週期
@@ -509,7 +516,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 54, symbol: "Xe", name: "氙", row: 5, col: 18 ,
-        category: "noble-gas", electronegativity: 2.60, year: 1898, flame:"none" ,image: "images/atom/Xe.jpg",
+        category: "noble-gas", electronegativity: 2.60, year: 1898, flame:"rgb(160,180,255)" ,image: "images/atom/Xe.jpg",
 
     },
     // 第六週期
@@ -523,11 +530,12 @@ const elements = [//週期表表格位置與彈窗訊息
         category: "alkaline-earth-metal", electronegativity: 0.89, year: 1808, flame: "rgb(144,238,144)" ,image: "images/atom/Ba.jpg",
 
     },
+    // 鑭系開始
     { 
         num: 57, symbol: "La", name: "鑭", row: 9, col: 4 ,
         category: "lanthanide", electronegativity: 1.10, year: 1839, flame:"none" ,image: "images/atom/La.jpg",
 
-    }, // 鑭系開始
+    }, 
     { 
         num: 58, symbol: "Ce", name: "鈰", row: 9, col: 5 ,
         category: "lanthanide", electronegativity: 1.12, year: 1803, flame:"none" ,image: "images/atom/Ce.jpg",
@@ -670,7 +678,7 @@ const elements = [//週期表表格位置與彈窗訊息
     },
     { 
         num: 86, symbol: "Rn", name: "氡", row: 6, col: 18 ,
-        category: "noble-gas", electronegativity: 0, year: 1900, flame:"none" ,image: "images/atom/Rn.jpg",
+        category: "noble-gas", electronegativity: 0, year: 1900, flame:"rgb(150,170,255)" ,image: "images/atom/Rn.jpg",
 
     },
     // 第七週期
@@ -684,11 +692,11 @@ const elements = [//週期表表格位置與彈窗訊息
         category: "alkaline-earth-metal", electronegativity: 0.90, year: 1898, flame:"rgb(255,0,0)" ,image: "images/atom/Ra.jpg",
 
     },
-    { 
+    { // 錒系開始
         num: 89, symbol: "Ac", name: "錒", row: 10, col: 4 ,
         category: "actinide", electronegativity: 1.10, year: 1899, flame:"none" ,image: "images/atom/Ac.jpg",
 
-    }, // 錒系開始
+    }, 
     { 
         num: 90, symbol: "Th", name: "釷", row: 10, col: 5 ,
         category: "actinide", electronegativity: 1.30, year: 1829, flame:"none" ,image: "images/atom/Th.jpg",
