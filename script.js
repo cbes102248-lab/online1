@@ -107,25 +107,30 @@ function initPeriodicTable() { // 週期表生成函式
             }
         } 
         else if (mode === 'year') {
+            let yearDisplay = el.year <= 0 ? "" : `<br><span style="font-size: 0.6rem; opacity: 0.8;">(${el.year})</span>`;
             if (el.year <= 0) {
                 displayText = "古代";
-                bgColor = "#5D4037"; // 深咖啡色 (泥土與原始)
+                bgColor = "#5D4037"; 
                 box.style.color = "#fff";
-            } else if (el.year > 0 && el.year <= 1600) {
-                displayText = "鍊金術";
-                bgColor = "#8B4513"; // 鞍褐色 (古老羊皮紙感)
+            } else if (el.year > 0 && el.year <= 1661) {
+                displayText = "鍊金術時期"+ yearDisplay;
+                bgColor = "#D4AF37"; 
                 box.style.color = "#fff";
-            } else if (el.year > 1600 && el.year <= 1800) {
-                displayText = "啟蒙時代";
-                bgColor = "#D4AF37"; // 經典金色 (化學黎明)
+            } else if (el.year > 1661 && el.year <= 1801) {
+                displayText = "啟蒙時代"+ yearDisplay;
+                bgColor = "#f08436ff"; 
                 box.style.color = "#000";
-            } else if (el.year > 1800 && el.year <= 1900) {
-                displayText = "工業革命";
-                bgColor = "#708090"; // 鉛灰色 (鋼鐵與工廠)
+            } else if (el.year > 1801 && el.year <= 1869) {
+                displayText = "工業革命"+ yearDisplay;
+                bgColor = "#708090"; 
+                box.style.color = "#fff";
+            } else if (el.year > 1869 && el.year <= 1927) {
+                displayText = "週期表時期"+ yearDisplay;
+                bgColor = "#65e463ff"; 
                 box.style.color = "#fff";
             } else {
-                displayText = el.year + "年";
-                bgColor = "#E0E0E0"; // 亮銀色 (現代科技)
+                displayText ="量子化學"+ yearDisplay ;
+                bgColor = "#E0E0E0"; 
                 box.style.color = "#000";
             }
         }
