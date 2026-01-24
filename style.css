@@ -391,7 +391,7 @@ body {
 .table-legend {
     position: absolute;
     top: 10px;/* 週期表高度微調 */
-    left: 12%;/* 避開氫元素 */
+    left: 14%;/* 避開氫元素 */
     width: auto;/* 讓寬度隨內容自動撐開 */
     display: flex;
     flex-direction: column; 
