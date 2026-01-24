@@ -69,7 +69,6 @@ function initPeriodicTable() { // 週期表生成函式
     table.style.backgroundSize = "cover";
     table.style.backgroundPosition = "center";
     table.style.backgroundRepeat = "no-repeat";
-    table.innerHTML = ''; // 清空舊的，避免重複生成
     if (mode === 'standard') {
         table.style.backgroundImage = "url('imgs/standard_bg.jpg')";
     } else if (mode === 'electronegativity') {
