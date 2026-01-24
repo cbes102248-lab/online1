@@ -273,7 +273,7 @@ body {
 /* 週期表外層容器 控制週期表的背景、邊距與陰影 */
 .periodic-table-container {
     margin: 0 auto 40px auto; 
-    background: #fff;
+    background-color: transparent;
     padding: 20px;
     border: 1px solid #ccc;
     border-top: none; 
@@ -459,6 +459,10 @@ body {
 #periodicTable {
     padding: 15px;
     transition: background-image 0.5s ease; /* 讓換背景圖時有淡入淡出的感覺 */
+}
+#periodicTable, #extraRows {
+    background-color: transparent; /* 讓主表與鑭錒系背景透明，透出容器背景 */
+    width: 100%;
 }
 
 @keyframes slideDown {
