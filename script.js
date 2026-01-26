@@ -153,7 +153,7 @@ function initPeriodicTable() { // 週期表生成函式
                 box.style.color = "#000";
             }
             box.style.backdropFilter = "blur(4px)";
-            box.style.webkitBackdropFilter = "blur(4px)"; // 相容性
+            box.style.webkitBackdropFilter = "blur(4px)"; 
             box.style.border = "1px solid rgba(255,255,255,0.1)";
         }
         // 套用動態計算的樣式

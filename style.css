@@ -310,7 +310,7 @@ body {
 .element-box:hover {
     background: #dce0e3;
     transform: scale(1.1);
-    z-index: 10; /* 確保放大時不被鄰居擋住 */
+    z-index: 10; 
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 /*方塊內的文字層次*/
