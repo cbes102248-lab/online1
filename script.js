@@ -459,8 +459,21 @@ const elements = [//週期表表格位置與彈窗訊息
 
     },
     {
-        num: 29, symbol: "Cu", name: "銅", row: 4, col: 11 ,
-        category: "transition-metal", electronegativity: 1.90, year: -7000, flame:"rgb(0,255,255)" ,image: "images/atom/Cu.jpg",
+        num: 29, 
+        symbol: "Cu", 
+        name: "銅", 
+        row: 4, 
+        col: 11,
+        category: "transition-metal", 
+        electronegativity: 1.90, 
+        year: -5000, 
+        flame: "green", 
+        image: "images/atom/Cu.jpg",
+        desc: "人類最早使用的金屬之一，具備極佳導電性，也是藍血生物的呼吸核心。",
+        link: "periodic-table/article27-copper.html", 
+        history: "名稱來自拉文字根Cuprum（意為塞浦路斯島的金屬），開啟了人類的青銅時代。",
+        usage: "廣泛用於電力電纜、微晶片繞線、散熱器、抗菌門把以及製造青銅與黃銅合金。",
+        funFact: "章魚、烏賊和鱟的血液是藍色的，因為牠們的血藍蛋白是用銅離子來運送氧氣，而不是鐵！"
 
     },
     { 
