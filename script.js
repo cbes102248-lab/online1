@@ -734,8 +734,21 @@ const elements = [//週期表表格位置與彈窗訊息
 
     },
     { 
-        num: 80, symbol: "Hg", name: "汞", row: 6, col: 12 ,
-        category: "transition-metal", electronegativity: 2.00, year: -1500, flame:"none" ,image: "images/atom/Hg.jpg",
+        num: 80, 
+        symbol: "Hg", 
+        name: "汞", 
+        row: 6, 
+        col: 12,
+        category: "transition-metal", 
+        electronegativity: 2.00, 
+        year: -1500, 
+        flame: "none", 
+        image: "images/atom/Hg.jpg",
+        desc: "常溫下唯一呈液態的金屬，游走於煉金術傳說與現代超導起點的奇特物質。",
+        link: "periodic-table/article80-mercury.html", 
+        history: "名稱來自羅馬神話的神速信使 Mercury，符號 Hg 則源自拉文字根「液態銀」。",
+        usage: "曾用於水銀溫度計、氣壓計、牙科銀汞齊，現代主要用於照明設備（日光燈）與化學催化。",
+        funFact: "雖然水銀有劇毒，但鐵塊和沉重的黃金都可以直接浮在它的表面，因為它的液態密度高達 13.5 g/cm³！",
 
     },
     { 
